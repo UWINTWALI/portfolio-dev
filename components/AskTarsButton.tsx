@@ -129,7 +129,7 @@ export default function AskTarsButton({
             </Button>
           </TooltipTrigger>
           <TooltipContent side="bottom">
-            <p>Ask Tars about Vivek</p>
+            <p>Ask Tars about Jean</p>
           </TooltipContent>
         </Tooltip>
         <Badge
@@ -139,7 +139,7 @@ export default function AskTarsButton({
             'group-hover:underline transition-all duration-300'
           )}
         >
-          Tars AI
+          AI Assistant
         </Badge>
       </div>
     </TooltipProvider>

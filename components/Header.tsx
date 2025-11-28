@@ -111,7 +111,7 @@ const Header = ({ currentLink = '', loading = false }) => {
             category: 'Button.Click',
             action: 'Github Link',
           });
-          window.open('https://github.com/vivek9patel');
+          window.open('https://github.com/UWINTWALI');
           onLinkClick();
         }}
         className={`text-muted-foreground ${mobile ? 'justify-start w-full text-lg h-12' : ''}`}
@@ -126,29 +126,13 @@ const Header = ({ currentLink = '', loading = false }) => {
             category: 'Button.Click',
             action: 'Linkedin Link',
           });
-          window.open('https://www.linkedin.com/in/vivek9patel/');
+          window.open('https://www.linkedin.com/in/uwintwali-umd/');
           onLinkClick();
         }}
         className={`text-muted-foreground ${mobile ? 'justify-start w-full text-lg h-12' : ''}`}
       >
         {mobile && <Linkedin className="mr-2 h-4 w-4" />}
         LinkedIn
-      </Button>
-      <Button
-        variant="link"
-        onClick={() => {
-          ReactGA.send({
-            hitType: 'pageview',
-            page: 'meet.vivek9patel.com',
-            title: 'V9 Meet',
-          });
-          window.open('https://meet.vivek9patel.com/');
-          onLinkClick();
-        }}
-        className={`text-muted-foreground ${mobile ? 'justify-start w-full text-lg h-12' : ''}`}
-      >
-        {mobile && <MessageCircle className="mr-2 h-4 w-4" />}
-        Let's chat
       </Button>
     </>
   );
@@ -164,16 +148,16 @@ const Header = ({ currentLink = '', loading = false }) => {
             <Button
               variant="link"
               onClick={() => {
-                window.open('https://www.linkedin.com/in/vivek9patel/');
+                window.open('https://www.linkedin.com/in/uwintwali-umd/');
                 ReactGA.event({
                   category: 'Button.Click',
-                  action: '@vivek9patel linkedin',
+                  action: '@uwintwali linkedin',
                 });
               }}
               className="font-thin text-sm sm:text-base md:text-lg lg:text-xl no-underline text-center min-w-0 flex-shrink-0 text-muted-foreground"
             >
               <span className="truncate max-w-[100px] xs:max-w-[120px] sm:max-w-[150px] md:max-w-none">
-                @vivek9patel
+                @uwintwali
               </span>
             </Button>
 

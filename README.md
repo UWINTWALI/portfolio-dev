@@ -28,6 +28,20 @@ NEXT_PUBLIC_SERVICE_ID = 'YOUR_SERVICE_ID'
 
 Replace your user id and service ID with values in your EmailJS service.
 
+### Environment variables for local development and production
+
+Create a `.env.local` file in the project root and set the environment variables from `.env.local.example` provided in the repo. Important variables used by this project:
+
+- `NEXTAUTH_URL` - e.g., http://localhost:3000
+- `NEXTAUTH_SECRET` - a secure random secret for NextAuth
+- `EDGE_CONFIG` - Vercel Edge Config connection string. Example: `https://edge-config.vercel.com/ecfg_<id>?token=<token>`
+- `EDGE_CONFIG_TOKEN` - the ID part used by the Vercel REST API if you need to update items programmatically (e.g., `ecfg_<id>`)
+- `VERCEL_TOKEN` - a Vercel personal token used to authorize REST API calls to update Edge Config
+- `GITHUB_PERSONAL_ACCESS_TOKEN` - GitHub token for repository API calls (stargazers)
+- `ADMIN_EMAIL` - optional, to restrict who can perform admin actions like incrementing likes
+
+See `.env.local.example` for an example with placeholders.
+
 ### Run the development server:
 
 ```bash

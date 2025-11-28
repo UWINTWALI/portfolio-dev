@@ -137,22 +137,22 @@ const Home: NextPage = () => {
       <div className="mt-10 sm:mt-20 flex">
         <div className="">
           <div className="text-4xl md:text-5xl font-medium">
-            <div className="">Hey, I'm Vivek Patel</div>
+            <div className="">Hey, I'm Jean de Dieu UWINTWALI</div>
             <div className="mt-4">
               <span className="hidden sm:inline-block mr-4">I'm a </span>
               <span className="text-primary">Frontend Magician 🪄</span>
             </div>
           </div>
           <div className="mt-4 flex items-center">
-            <GitHubStats username="vivek9patel" />
+            <GitHubStats username="UWINTWALI" />
           </div>
           <div className="text-muted-foreground font-light space-y-1 mt-8">
             <p className="">
               I'm a developer based in{' '}
               <Anchor
-                href="https://www.google.com/maps/place/durham+nc/data=!4m2!3m1!1s0x89ace471120f66f1:0xe17ada898a46f27e?sa=X&ved=1t:155783&ictx=111"
+                href="https://www.google.com/maps/place/Kigali+Marriott+Hotel/@-1.94995,30.06034,17z"
                 target={'_blank'}
-                onClick={() => handleLinkClick('Durham Location')}
+                onClick={() => handleLinkClick('Kigali Location')}
               >
                 Durham, NC
               </Anchor>
@@ -160,7 +160,7 @@ const Home: NextPage = () => {
               applications, and teams from US and India. I specialize in
               building{' '}
               <Anchor
-                href="https://vivek9patel.github.io/"
+                href="https://mucyo.github.io/"
                 onClick={() => handleLinkClick('Exceptional Link')}
                 target={'_blank'}
               >
@@ -215,11 +215,11 @@ const Home: NextPage = () => {
         <ExperienceItem
           dateRange="May '23 - Apr '24"
           logo={uopxLogo}
-          logoAlt="University of Phoenix Logo"
+          logoAlt="University of Rwanda Logo"
           duration="Internship - 1 year"
           title="Software Engineer at"
-          company="University of Phoenix"
-          description="I develop robust, responsive components with a focus on accessibility, enhancing user experiences alongside Adobe AEM, Adobe ADA, and Adobe Target. Worked on building new microservice with Spring Boot, Java, Elasticsearch, Docker, Terraform and AWS."
+          company="University of Rwanda"
+          description="I developed ,,,,."
           onLinkClick={() => handleLinkClick('UOPX Link')}
         />
 
@@ -230,7 +230,7 @@ const Home: NextPage = () => {
           duration="Internship - 6 months"
           title="Software Engineer at"
           company="HackerRank"
-          description="I contributed to the optimization of a cloud-based Integrated Development Environment (IDE), elevating efficiency. I worked on theia, React.js, Typescript, Docker, and Kubernetes."
+          description="I contributed ..."
           onLinkClick={() => handleLinkClick('Hackerrank Link')}
         />
 
@@ -241,7 +241,7 @@ const Home: NextPage = () => {
           duration="Internship - 3 months"
           title="Software Engineer at"
           company="100ms"
-          description="I worked with fontend Dashboard team, building a customised video-conferencing app-builder using Next.js, Typescript, Tailwind CSS, Vercel and AWS."
+          description="I worked with ....., Vercel and AWS."
           onLinkClick={() => handleLinkClick('100ms Link')}
         />
 
@@ -252,14 +252,14 @@ const Home: NextPage = () => {
           duration="Part-time - 9 months"
           title="Co-founder at"
           company="Webmate Web Services"
-          description="Led the establishment of an affordable software services platform for small businesses during the pandemic, driving client meeting management and exceptional customer satisfaction."
+          description="Led the establis....."
           onLinkClick={() => handleLinkClick('Webmate Link')}
         />
 
         <div
           onClick={() => {
             handleLinkClick('Recommendations Link');
-            window.open('https://www.linkedin.com/in/vivek9patel/', '_blank');
+            window.open('https://www.linkedin.com/in/uwintwali-umd/', '_blank');
           }}
           className="text-muted-foreground underline hover:text-ring cursor-pointer"
         >
@@ -298,9 +298,9 @@ const Home: NextPage = () => {
           reach out to me at{' '}
           <Anchor
             onClick={() => handleLinkClick('MailTo Link')}
-            href="mailto:vivek.p9737@gmail.com"
+            href="mailto:uwintwalijeandedieu3@gmail.com"
           >
-            vivek.p9737@gmail.com
+            uwintwalijeandedieu3@gmail.com
           </Anchor>
           !
         </div>

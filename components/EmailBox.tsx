@@ -101,8 +101,8 @@ export default function EmailBox() {
     const socialId = socialIdRef.current?.value;
     setLoading(true);
     const templateParams = {
-      from_name: 'vivek9patel.com',
-      to_name: 'Vivek Patel',
+      from_name: 'mucyo.com',
+      to_name: 'Jean de Dieu UWINTWALI',
       subject: `${senderName ? senderName : 'personal-site'}`,
       message: `${message}${socialId ? `\n\nSocial ID: ${socialId}` : ''}`,
     };
@@ -171,7 +171,7 @@ export default function EmailBox() {
           data-cursor-focusable="true"
           ref={subjectRef}
           rows={5}
-          placeholder="Hey Vivek, This is an awesome website!"
+          placeholder="Hey Jean de Dieu, This is an awesome Portfolio!"
           required
         ></Textarea>
       </div>

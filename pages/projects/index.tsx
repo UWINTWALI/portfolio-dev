@@ -106,7 +106,7 @@ const Projects: NextPage<Props> = () => {
                   <SelectLabel>Sort by</SelectLabel>
                   <SelectItem value="stars">Stars</SelectItem>
                   <SelectItem value="year">Year</SelectItem>
-                  <SelectItem value="priority">Vivek's Favorites</SelectItem>
+                  <SelectItem value="priority">uwintwali's Favorites</SelectItem>
                 </SelectGroup>
               </SelectContent>
             </Select>

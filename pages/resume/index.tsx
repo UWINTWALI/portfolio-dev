@@ -42,7 +42,7 @@ const Resume: NextPage = () => {
       category: 'Button.Click',
       action: 'Full Screen Resume',
     });
-    window.open('/vivek_patel_resume.pdf', '_blank');
+    window.open('/uwintwali_resume.pdf', '_blank');
   };
 
   const handleDownload = () => {
@@ -53,8 +53,8 @@ const Resume: NextPage = () => {
 
     // Create a temporary anchor element to trigger download
     const link = document.createElement('a');
-    link.href = '/vivek_patel_resume.pdf';
-    link.download = 'vivek_patel_resume.pdf';
+    link.href = '/uwintwali_resume.pdf';
+    link.download = 'uwintwali_resume.pdf';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -169,7 +169,7 @@ const Resume: NextPage = () => {
               </div>
             ) : (
               <iframe
-                src="/vivek_patel_resume.pdf"
+                src="/uwintwali_resume.pdf"
                 width="100%"
                 height="800"
                 className="border-0 rounded-lg"

@@ -25,20 +25,20 @@ type History = {
 
 // Array of sample questions for random selection
 const SAMPLE_QUESTIONS = [
-  'Can you share a recommendation from someone who has worked with Vivek?',
-  "What is Vivek's education background?",
-  'What are some examples of problems Vivek has solved in past roles?',
-  'Can you list some projects and frameworks Vivek has worked on?',
-  "What's Vivek's biggest professional achievement?",
-  'How does Vivek approach problem-solving in his projects?',
-  'What programming languages and technologies is Vivek most passionate about?',
-  "Can you tell me about Vivek's leadership style and team collaboration?",
-  'What unique skills or expertise does Vivek bring to a team?',
-  'How does Vivek stay updated with the latest technology trends?',
-  "What's the most challenging project Vivek has worked on?",
-  "Can you describe Vivek's work philosophy and values?",
-  'What industries or domains has Vivek gained experience in?',
-  'How does Vivek balance technical excellence with business requirements?',
+  'Can you share a recommendation from someone who has worked with Jean de Dieu?',
+  "What is Jean de Dieu's education background?",
+  'What are some examples of problems Jean de Dieu has solved in past roles?',
+  'Can you list some projects and frameworks Jean de Dieu has worked on?',
+  "What's Jean de Dieu's biggest professional achievement?",
+  'How does Jean de Dieu approach problem-solving in his projects?',
+  'What programming languages and technologies is Jean de Dieu most passionate about?',
+  "Can you tell me about Jean de Dieu's leadership style and team collaboration?",
+  'What unique skills or expertise does Jean de Dieu bring to a team?',
+  'How does Jean de Dieu stay updated with the latest technology trends?',
+  "What's the most challenging project Jean de Dieu has worked on?",
+  "Can you describe Jean de Dieu's work philosophy and values?",
+  'What industries or domains has Jean de Dieu gained experience in?',
+  'How does Jean de Dieu balance technical excellence with business requirements?',
 ];
 
 const Gpt: NextPage = () => {
@@ -273,7 +273,7 @@ const Gpt: NextPage = () => {
                       Hey I'm TARS!
                     </div>
                     <p className="text-muted-foreground">
-                      I'm here to help you get to know Vivek better. Ask me
+                      I'm here to help you get to know Jean de Dieu better. Ask me
                       anything about his work, projects, or experience!
                     </p>
                   </>
@@ -320,7 +320,7 @@ const Gpt: NextPage = () => {
               onChange={e => setQuery(e.target.value)}
               onKeyDown={handleKeyDown}
               className="flex-1"
-              placeholder={'Ask me anything about Vivek...'}
+              placeholder={'Ask me anything about Jean de Dieu...'}
               disabled={queryProcessing || !isServerUp || cooldownRemaining > 0}
             />
             <Button
