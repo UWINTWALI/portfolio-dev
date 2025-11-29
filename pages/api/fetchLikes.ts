@@ -27,7 +27,12 @@ export default async function handler(
     const likes = await get('portfolio-likes');
     return res.status(200).json({ likes });
   } catch (err: any) {
-    console.error('Error fetching edge config key `portfolio-likes`:', err?.message ?? err);
-    return res.status(500).json({ error: 'Error fetching likes from Edge Config' });
+    console.error(
+      'Error fetching edge config key `portfolio-likes`:',
+      err?.message ?? err
+    );
+    return res
+      .status(500)
+      .json({ error: 'Error fetching likes from Edge Config' });
   }
 }

@@ -17,14 +17,21 @@ export default async function handler(
   // Require an ADMIN_EMAIL env var to restrict who can increment likes
   const allowedAdminEmail = process.env.ADMIN_EMAIL;
   const userRole = session.user?.role;
-  if (allowedAdminEmail && session.user?.email !== allowedAdminEmail && userRole !== 'admin') {
+  if (
+    allowedAdminEmail &&
+    session.user?.email !== allowedAdminEmail &&
+    userRole !== 'admin'
+  ) {
     return res.status(403).json({ message: 'Forbidden' });
   }
   const isEdgeConfigured = !!process.env.EDGE_CONFIG;
   // If we plan to update Edge Config (via REST API) ensure tokens are present
   const willUseVercelApi = !!process.env.EDGE_CONFIG_TOKEN;
   if (willUseVercelApi && !process.env.VERCEL_TOKEN) {
-    return res.status(500).json({ message: 'VERCEL_TOKEN is required to update Edge Config items via Vercel REST API.' });
+    return res.status(500).json({
+      message:
+        'VERCEL_TOKEN is required to update Edge Config items via Vercel REST API.',
+    });
   }
   let currentLikes = 0;
   if (isEdgeConfigured) {
@@ -85,8 +92,14 @@ export default async function handler(
       return res.status(200).json(data);
     } else {
       const localPath = path.join(process.cwd(), 'data', 'likes.json');
-      await writeFile(localPath, JSON.stringify({ 'portfolio-likes': updatedLikes }, null, 2), 'utf-8');
-      return res.status(200).json({ likes: updatedLikes, source: 'local-file' });
+      await writeFile(
+        localPath,
+        JSON.stringify({ 'portfolio-likes': updatedLikes }, null, 2),
+        'utf-8'
+      );
+      return res
+        .status(200)
+        .json({ likes: updatedLikes, source: 'local-file' });
     }
   } catch (err: any) {
     console.error('Error updating edge-config items:', err?.message ?? err);
@@ -94,12 +107,20 @@ export default async function handler(
     if (!process.env.EDGE_CONFIG) {
       try {
         const localPath = path.join(process.cwd(), 'data', 'likes.json');
-        await writeFile(localPath, JSON.stringify({ 'portfolio-likes': updatedLikes }, null, 2), 'utf-8');
-        return res.status(200).json({ likes: updatedLikes, source: 'local-file' });
+        await writeFile(
+          localPath,
+          JSON.stringify({ 'portfolio-likes': updatedLikes }, null, 2),
+          'utf-8'
+        );
+        return res
+          .status(200)
+          .json({ likes: updatedLikes, source: 'local-file' });
       } catch (writeErr) {
         console.error('Error writing fallback likes file:', writeErr);
       }
     }
-    return res.status(500).json({ message: 'Unable to update Edge Config items.' });
+    return res
+      .status(500)
+      .json({ message: 'Unable to update Edge Config items.' });
   }
 }

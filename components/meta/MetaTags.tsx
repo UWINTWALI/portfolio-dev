@@ -8,6 +8,7 @@ export default function MetaTags() {
         sizes="180x180"
         href="/meta/apple-touch-icon.png"
       />
+      <link rel="icon" type="image/png" href="/meta/favicon-32x32.png" />
       <link
         rel="icon"
         type="image/png"

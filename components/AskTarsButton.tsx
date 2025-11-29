@@ -10,6 +10,7 @@ import {
   TooltipTrigger,
 } from './ui/tooltip';
 import { cn } from '@/lib/utils';
+import tarsImage from '../images/tars.png';
 
 export default function AskTarsButton({
   currentLink,
@@ -119,7 +120,7 @@ export default function AskTarsButton({
                 data-cursor="ask-tars-button"
                 className="w-full h-full flex items-center justify-center"
                 style={{
-                  maskImage: `url(/images/tars.svg)`,
+                  maskImage: `url(${tarsImage.src})`,
                   maskRepeat: 'no-repeat',
                   maskPosition: 'center',
                   maskSize: 'contain',
@@ -129,7 +130,7 @@ export default function AskTarsButton({
             </Button>
           </TooltipTrigger>
           <TooltipContent side="bottom">
-            <p>Ask Tars about Jean</p>
+            <p>Ask an AI assistant about Jean</p>
           </TooltipContent>
         </Tooltip>
         <Badge

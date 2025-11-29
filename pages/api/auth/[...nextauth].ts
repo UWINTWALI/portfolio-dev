@@ -1,8 +1,9 @@
 import NextAuth from 'next-auth';
+import type { NextAuthOptions } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 
 // Dummy credentials/authorization
-export const authOptions = {
+export const authOptions: NextAuthOptions = {
   providers: [
     CredentialsProvider({
       name: 'V9 Credentials',
@@ -16,7 +17,10 @@ export const authOptions = {
         const adminUser = process.env.ADMIN_USERNAME;
         const adminPass = process.env.ADMIN_PASSWORD;
         if (adminUser && adminPass) {
-          if (credentials?.username === adminUser && credentials?.password === adminPass) {
+          if (
+            credentials?.username === adminUser &&
+            credentials?.password === adminPass
+          ) {
             return {
               id: 1,
               name: 'Admin',
@@ -32,14 +36,14 @@ export const authOptions = {
     }),
   ],
   callbacks: {
-    async jwt({ token, user }) {
+    async jwt({ token, user }: { token: any; user?: any }) {
       if (user) {
         // @ts-ignore
         token.role = (user as any).role ?? 'user';
       }
       return token;
     },
-    async session({ session, token }) {
+    async session({ session, token }: { session: any; token: any }) {
       // @ts-ignore
       session.user = session.user || {};
       // @ts-ignore

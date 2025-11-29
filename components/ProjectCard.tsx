@@ -63,14 +63,26 @@ export default function ProjectCard(props: ProjectCardProps) {
 
       <CardContent>
         <div className="flex custom-scroll-bar-y justify-start items-center">
-          {props.badges.map((badge, i) => (
-            <img
-              key={i}
-              className="m-1 opacity-80"
-              src={`${badgeImage[badge.toLowerCase()]}`}
-              alt={`${badge} badge image`}
-            />
-          ))}
+          {props.badges.map((badge, i) => {
+            const key = badge.toLowerCase();
+            const src = badgeImage[key];
+            if (src) {
+              return (
+                <img
+                  key={i}
+                  className="m-1 opacity-80"
+                  src={src}
+                  alt={`${badge} badge image`}
+                />
+              );
+            }
+            // fallback to a styled Badge when there is no image mapping
+            return (
+              <Badge key={i} variant="secondary" className="m-1">
+                {badge}
+              </Badge>
+            );
+          })}
         </div>
       </CardContent>
 

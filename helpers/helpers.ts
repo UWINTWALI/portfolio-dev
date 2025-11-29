@@ -90,6 +90,23 @@ export const badgeImage: {
     'https://img.shields.io/badge/Webpack-%238DD6F9.svg?style=flat-square&logo=webpack&logoColor=black',
   python:
     'https://img.shields.io/badge/Python-%2314354C.svg?style=flat-square&logo=python&logoColor=white',
+  openai:
+    'https://img.shields.io/badge/OpenAI-%23000000.svg?style=flat-square&logo=openai&logoColor=white',
+  'openai api':
+    'https://img.shields.io/badge/OpenAI-%23000000.svg?style=flat-square&logo=openai&logoColor=white',
+  langchain:
+    'https://img.shields.io/badge/LangChain-%23FF5A5F.svg?style=flat-square&logo=langchain&logoColor=white',
+  pinecone:
+    'https://img.shields.io/badge/Pinecone-%231A1A1A.svg?style=flat-square&logo=pinecone&logoColor=white',
+  'retrieval-augmented generation(rag)':
+    'https://img.shields.io/badge/RAG-%236f42c1.svg?style=flat-square',
+  rag: 'https://img.shields.io/badge/RAG-%236f42c1.svg?style=flat-square',
+  'retrieval-augmented generation':
+    'https://img.shields.io/badge/RAG-%236f42c1.svg?style=flat-square',
+  'retrieval augmented generation':
+    'https://img.shields.io/badge/RAG-%236f42c1.svg?style=flat-square',
+  'retrieval-augmented generation (rag)':
+    'https://img.shields.io/badge/RAG-%236f42c1.svg?style=flat-square',
   django:
     'https://img.shields.io/badge/Django-%23092E20.svg?style=flat-square&logo=django&logoColor=white',
   'codeforces api':

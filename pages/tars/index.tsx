@@ -7,11 +7,16 @@ import { useEffect, useRef, useState } from 'react';
 import ReactGA from 'react-ga4';
 import Avatar from '../../components/Avatar';
 import Markdown from 'markdown-to-jsx';
-import { RefreshCw, Send } from 'lucide-react';
+import { RefreshCw, Send, User } from 'lucide-react';
+import {
+  Tooltip,
+  TooltipTrigger,
+  TooltipContent,
+  TooltipProvider,
+} from '@/components/ui/tooltip';
 import { toast } from 'sonner';
 
-import v9Icon from '../../images/v9.png';
-import tarsIcon from '../../images/tars.svg';
+import tarsIcon from '../../images/tars.png';
 import { v4 as uuidv4 } from 'uuid';
 
 export const LOCAL_HISTORY_KEY = 'tars-history';
@@ -273,8 +278,8 @@ const Gpt: NextPage = () => {
                       Hey I'm TARS!
                     </div>
                     <p className="text-muted-foreground">
-                      I'm here to help you get to know Jean de Dieu better. Ask me
-                      anything about his work, projects, or experience!
+                      I'm here to help you get to know Jean de Dieu better. Ask
+                      me anything about his work, projects, or experience!
                     </p>
                   </>
                 ) : (
@@ -352,7 +357,20 @@ function UserMessage({ message }: { message: string }) {
         <div className="bg-primary text-primary-foreground rounded-2xl rounded-br-md px-4 py-2">
           <p className="text-sm">{message}</p>
         </div>
-        <Avatar title="user" url={v9Icon.src} width="w-8" height="h-8" />
+        <TooltipProvider>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Avatar
+                title="user"
+                icon={<User className="h-5 w-5 text-foreground" />}
+                width="w-8"
+                height="h-8"
+                ariaLabel="guest"
+              />
+            </TooltipTrigger>
+            <TooltipContent>guest</TooltipContent>
+          </Tooltip>
+        </TooltipProvider>
       </div>
     </div>
   );

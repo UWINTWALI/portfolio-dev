@@ -1,4 +1,4 @@
-import type { NextPage } from 'next';
+import type { NextPage, GetStaticProps } from 'next';
 import { Button } from '@/components/ui/button';
 import {
   Card,
@@ -19,7 +19,7 @@ import { useEffect, useState } from 'react';
 import ReactGA from 'react-ga4';
 import { Download, ExternalLink, FileText, Eye, Loader2 } from 'lucide-react';
 
-const Resume: NextPage = () => {
+const Resume: NextPage<{ resumeVersion: string }> = ({ resumeVersion }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
 
@@ -42,7 +42,7 @@ const Resume: NextPage = () => {
       category: 'Button.Click',
       action: 'Full Screen Resume',
     });
-    window.open('/uwintwali_resume.pdf', '_blank');
+    window.open(`/uwintwali_resume.pdf`, '_blank');
   };
 
   const handleDownload = () => {
@@ -53,7 +53,7 @@ const Resume: NextPage = () => {
 
     // Create a temporary anchor element to trigger download
     const link = document.createElement('a');
-    link.href = '/uwintwali_resume.pdf';
+    link.href = `/uwintwali_resume.pdf`;
     link.download = 'uwintwali_resume.pdf';
     document.body.appendChild(link);
     link.click();
@@ -169,7 +169,7 @@ const Resume: NextPage = () => {
               </div>
             ) : (
               <iframe
-                src="/uwintwali_resume.pdf"
+                src={`/uwintwali_resume.pdf?v=${resumeVersion}`}
                 width="100%"
                 height="800"
                 className="border-0 rounded-lg"
@@ -208,3 +208,23 @@ const Resume: NextPage = () => {
 };
 
 export default Resume;
+
+export const getStaticProps: GetStaticProps = async () => {
+  const fs = require('fs');
+  const path = require('path');
+  const filePath = path.join(process.cwd(), 'public', 'uwintwali_resume.pdf');
+  let resumeVersion = '';
+  try {
+    const stats = fs.statSync(filePath);
+    resumeVersion = String(stats.mtime.getTime());
+  } catch (error) {
+    // If file not found, fallback to build timestamp
+    resumeVersion = String(Date.now());
+  }
+
+  return {
+    props: {
+      resumeVersion,
+    },
+  };
+};

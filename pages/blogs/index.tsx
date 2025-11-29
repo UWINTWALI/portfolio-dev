@@ -44,18 +44,28 @@ export default Blogs;
 export async function getStaticProps() {
   const blogs = fs.readdirSync(path.join('blogs'));
   console.log(blogs);
-  const blogList = blogs.map(blog => {
-    const slug = blog.replace('.mdx', '');
-    const fileData = fs.readFileSync(path.join('blogs', blog), 'utf-8');
-    let { data: frontmatter } = matter(fileData);
-    return {
-      slug,
-      frontmatter: {
-        title: frontmatter.title,
-        publishedAt: Math.floor(frontmatter.publishedAt / 1000),
-      },
-    };
-  });
+  const blogList = blogs
+    .map(blog => {
+      const slug = blog.replace('.mdx', '');
+      const fileData = fs.readFileSync(path.join('blogs', blog), 'utf-8');
+      let { data: frontmatter } = matter(fileData);
+      const title = frontmatter?.title ?? null;
+      const publishedAtRaw = frontmatter?.publishedAt ?? null;
+      const publishedAt = publishedAtRaw
+        ? typeof publishedAtRaw === 'number'
+          ? Math.floor(publishedAtRaw / 1000)
+          : Math.floor(new Date(publishedAtRaw).getTime() / 1000)
+        : null;
+      if (!title || !publishedAt) return null;
+      return {
+        slug,
+        frontmatter: {
+          title,
+          publishedAt,
+        },
+      };
+    })
+    .filter(Boolean) as Array<{ slug: string; frontmatter: FrontMatter }>;
 
   return {
     props: {

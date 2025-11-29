@@ -15,6 +15,11 @@ import {
 
 const Header = ({ currentLink = '', loading = false }) => {
   const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const toggleThemeMode = () => {
@@ -169,10 +174,14 @@ const Header = ({ currentLink = '', loading = false }) => {
                 onClick={toggleThemeMode}
                 aria-label="Toggle theme mode"
               >
-                {theme === 'dark' ? (
-                  <Sun className="h-4 w-4" />
+                {mounted ? (
+                  theme === 'dark' ? (
+                    <Sun className="h-4 w-4" />
+                  ) : (
+                    <Moon className="h-4 w-4" />
+                  )
                 ) : (
-                  <Moon className="h-4 w-4" />
+                  <span className="h-4 w-4 inline-block" />
                 )}
               </Button>
               <Button
@@ -198,10 +207,14 @@ const Header = ({ currentLink = '', loading = false }) => {
                 className="ml-2"
                 aria-label="Toggle theme mode"
               >
-                {theme === 'dark' ? (
-                  <Sun className="h-4 w-4" />
+                {mounted ? (
+                  theme === 'dark' ? (
+                    <Sun className="h-4 w-4" />
+                  ) : (
+                    <Moon className="h-4 w-4" />
+                  )
                 ) : (
-                  <Moon className="h-4 w-4" />
+                  <span className="h-4 w-4 inline-block" />
                 )}
               </Button>
             </div>

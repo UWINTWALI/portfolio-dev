@@ -70,6 +70,24 @@ const nextConfig = {
           },
         ],
       },
+      {
+        source: '/uwintwali_resume.pdf',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'no-store',
+          },
+        ],
+      },
+      {
+        source: '/meta/:path*',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'no-store',
+          },
+        ],
+      },
     ];
   },
   

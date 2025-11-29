@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useThemeManager } from '../hooks/useThemeManager';
 import { Button } from './ui/button';
 import {
@@ -37,7 +37,12 @@ interface ThemePreviewProps {
   mode: 'light' | 'dark';
 }
 
-const ThemePreview: React.FC<ThemePreviewProps> = ({ colors, name, mode }) => (
+const ThemePreview: React.FC<ThemePreviewProps & { mounted?: boolean }> = ({
+  colors,
+  name,
+  mode,
+  mounted = false,
+}) => (
   <div className="flex items-center space-x-2">
     <div className="flex space-x-1">
       <div
@@ -58,10 +63,14 @@ const ThemePreview: React.FC<ThemePreviewProps> = ({ colors, name, mode }) => (
     </div>
     <span className="text-sm font-medium">{name}</span>
     <Badge variant="outline" className="text-xs">
-      {mode === 'light' ? (
-        <Sun className="w-3 h-3" />
+      {mounted ? (
+        mode === 'light' ? (
+          <Sun className="w-3 h-3" />
+        ) : (
+          <Moon className="w-3 h-3" />
+        )
       ) : (
-        <Moon className="w-3 h-3" />
+        <span className="inline-block w-3 h-3" />
       )}
     </Badge>
   </div>
@@ -92,6 +101,8 @@ export const ThemeSelector: React.FC<ThemeSelectorProps> = ({
   } = useThemeManager();
 
   const [isPreviewMode, setIsPreviewMode] = useState(false);
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
 
   const handleThemeSelect = (themeName: string) => {
     // Track theme selection
@@ -198,10 +209,14 @@ export const ThemeSelector: React.FC<ThemeSelectorProps> = ({
                 }}
                 className="p-1 sm:p-2 h-8 w-8 sm:h-9 sm:w-9 flex-shrink-0"
               >
-                {mode === 'light' ? (
-                  <Sun className="h-3 w-3 sm:h-4 sm:w-4" />
+                {mounted ? (
+                  mode === 'light' ? (
+                    <Sun className="h-3 w-3 sm:h-4 sm:w-4" />
+                  ) : (
+                    <Moon className="h-3 w-3 sm:h-4 sm:w-4" />
+                  )
                 ) : (
-                  <Moon className="h-3 w-3 sm:h-4 sm:w-4" />
+                  <span className="inline-block w-3 h-3 sm:w-4 sm:h-4" />
                 )}
               </Button>
             </TooltipTrigger>
