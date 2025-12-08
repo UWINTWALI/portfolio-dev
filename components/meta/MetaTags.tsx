@@ -8,25 +8,11 @@ export default function MetaTags() {
         sizes="180x180"
         href="/meta/apple-touch-icon.png"
       />
-      <link rel="icon" type="image/png" href="/meta/favicon-32x32.png" />
-      <link
-        rel="icon"
-        type="image/png"
-        sizes="32x32"
-        href="/meta/favicon-32x32.png"
-      />
-      <link
-        rel="icon"
-        type="image/png"
-        sizes="16x16"
-        href="/meta/favicon-16x16.png"
-      />
+      <link rel="icon" type="image/png" href="/favicon.png" />
+      <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png" />
+      <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png" />
       <link rel="manifest" href="/meta/site.webmanifest" />
-      <link
-        rel="mask-icon"
-        href="/meta/safari-pinned-tab.svg"
-        color="#5bbad5"
-      />
+      <link rel="mask-icon" href="/favicon.png" color="#5bbad5" />
       <meta name="msapplication-TileColor" content="#2b5797" />
       <meta name="theme-color" content="#162447" />
 
@@ -53,12 +39,12 @@ export default function MetaTags() {
         property="og:description"
         content="UWINTWALI's Portfolio Website with his past experiences, projects, resume."
       />
-      <meta property="og:image" content="/meta/meta-social-image.png" />
+      <meta property="og:image" content="/favicon.png" />
       <meta name="og:locale" content="en_IN" />
       <meta name="og:type" content="website" />
 
-      <meta name="twitter:site" content="vivek9patel" />
-      <meta name="twitter:creator" content="vivek9patel" />
+      <meta name="twitter:site" content="Jean de Dieu UWINTWALI" />
+      <meta name="twitter:creator" content="Jean de Dieu UWINTWALI" />
       <meta property="twitter:card" content="summary_large_image" />
       {/* <meta property="twitter:url" content="https://muc.com/" /> */}
       <meta property="twitter:title" content="Jean de Dieu UWINTWALI" />
@@ -66,7 +52,7 @@ export default function MetaTags() {
         property="twitter:description"
         content="Jean de Dieu UWINTWALI's Portfolio Website with his past experiences, projects, resume."
       />
-      <meta property="twitter:image" content="/meta/meta-social-image.png" />
+      <meta property="twitter:image" content="/favicon.png" />
     </>
   );
 }

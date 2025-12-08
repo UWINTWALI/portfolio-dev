@@ -37,3 +37,4 @@ docs.md
 
 # typescript
 *.tsbuildinfo
+.env*.local

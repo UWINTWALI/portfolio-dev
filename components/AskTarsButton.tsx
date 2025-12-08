@@ -140,7 +140,7 @@ export default function AskTarsButton({
             'group-hover:underline transition-all duration-300'
           )}
         >
-          AI Assistant
+          Assistant
         </Badge>
       </div>
     </TooltipProvider>
