@@ -183,11 +183,8 @@ const Home: NextPage = () => {
           </Button>
         </div>
         <div className="text-muted-foreground font-light mt-2 mb-4">
-          For over 2 years, I have cultivated a deep understanding and expertise
-          in <span className="">Front-end Engineering</span>, always
-          prioritizing the user's needs. In every project I undertake, my aim is
-          to craft tailored, intuitive, and thoroughly tested experiences that
-          align the goals of companies with the expectations of users.
+          For over 2 years, I have specialized in <span className="">developing software products that work reliably in real-world operations</span>,
+with a strong focus on the user experience. In every project, I design intuitive interfaces, implement robust functionality, and thoroughly test the product to ensure it meets both business objectives and user expectations.
         </div>
         <Separator className="my-4" />
         <ExperienceItem
