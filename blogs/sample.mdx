@@ -1,0 +1,32 @@
+---
+title: "Quick Guide — Building a Tiny Web Component"
+publishedAt: "2023-08-15T10:00:00.000Z"
+---
+
+# Building a Tiny Web Component
+
+This is a short, dummy technical post to demonstrate the blog listing on the portfolio site.
+
+We create a very small web component that renders a greeting. This example uses plain JavaScript and is intentionally minimal.
+Add a sample MDX post
+```html
+<script>
+	class HelloCard extends HTMLElement {
+		connectedCallback() {
+			this.innerHTML = `
+				<div style="padding:16px;border:1px solid #e5e7eb;border-radius:8px;">
+					<strong>Hello, web components!</strong>
+					<div>Built with plain JS for demo purposes.</div>
+				</div>`;
+		}
+	}
+	customElements.define('hello-card', HelloCard);
+// Use: <hello-card></hello-card>
+</script>
+```
+
+Conclusion: this little example shows how simple components can be encapsulated and reused. Replace this content with your real post when ready.
+
+---
+
+Want me to create another sample with MDX components (React) or keep this plain MDX example? 

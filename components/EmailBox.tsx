@@ -150,7 +150,7 @@ export default function EmailBox() {
           type="email"
           ref={senderNameRef}
           data-cursor-focusable="true"
-          placeholder="xyz@v9.com"
+          placeholder="example@gmail.com"
           required
         ></Input>
       </div>

@@ -37,10 +37,8 @@ const GitHubStats = dynamic(() => import('../components/GitHubStats'), {
 });
 
 // Static image imports (more efficient for images)
-import uopxLogo from '../images/uopx-phoenixbird-red.png';
-import hackerrankLogo from '../images/HackerRank_logo.png';
-import hmsLogo from '../images/100ms_logo.png';
-import webmateLogo from '../images/webmate_logo.png';
+import MinijustLogo from '../images/minijust.jpeg';
+import WsaLogo from '../images/wsa.jpeg';
 
 const ExperienceItem = memo(
   ({
@@ -51,6 +49,7 @@ const ExperienceItem = memo(
     title,
     company,
     description,
+    url,
     onLinkClick,
   }: {
     dateRange: string;
@@ -60,6 +59,7 @@ const ExperienceItem = memo(
     title: string;
     company: string;
     description?: string;
+    url?: string;
     onLinkClick: () => void;
   }) => (
     <>
@@ -79,9 +79,13 @@ const ExperienceItem = memo(
             <div className="text-lg sm:text-xl">
               {title}{' '}
               <Anchor
-                href={`https://www.google.com/search?q=${company
-                  .toLowerCase()
-                  .replace(/\s+/g, '+')}`}
+                href={
+                  url
+                    ? url
+                    : `https://www.google.com/search?q=${company
+                        .toLowerCase()
+                        .replace(/\s+/g, '+')}`
+                }
                 onClick={onLinkClick}
               >
                 {company}
@@ -140,7 +144,9 @@ const Home: NextPage = () => {
             <div className="">Hey, I'm Jean de Dieu UWINTWALI</div>
             <div className="mt-4">
               <span className="hidden sm:inline-block mr-4">I'm a </span>
-              <span className="text-primary">Frontend Magician 🪄</span>
+              <span className="text-primary">
+                ✨ Full-stack developer, ML & AI Researcher 🪄
+              </span>
             </div>
           </div>
           <div className="mt-4 flex items-center">
@@ -148,25 +154,18 @@ const Home: NextPage = () => {
           </div>
           <div className="text-muted-foreground font-light space-y-1 mt-8">
             <p className="">
-              I'm a developer based in{' '}
+              I'm a passionate software developer exploring how data can spark
+              meaningful innovation. I’m currently diving into Data Science,
+              Machine Learning, and AI trends as I complete my fourth year at
+              the{' '}
               <Anchor
-                href="https://www.google.com/maps/place/Kigali+Marriott+Hotel/@-1.94995,30.06034,17z"
+                href="https://www.ur.ac.rw/"
                 target={'_blank'}
-                onClick={() => handleLinkClick('Kigali Location')}
+                onClick={() => handleLinkClick('University of Rwanda')}
               >
-                Durham, NC
+                University of Rwanda
               </Anchor>
-              , with 2 years of experience working with various software
-              applications, and teams from US and India. I specialize in
-              building{' '}
-              <Anchor
-                href="https://mucyo.github.io/"
-                onClick={() => handleLinkClick('Exceptional Link')}
-                target={'_blank'}
-              >
-                exceptional softwares
-              </Anchor>
-              , applications, backend services and everything in between.
+              .
             </p>
           </div>
         </div>
@@ -191,69 +190,28 @@ const Home: NextPage = () => {
           align the goals of companies with the expectations of users.
         </div>
         <Separator className="my-4" />
-
         <ExperienceItem
-          dateRange="Mar '25 - Present"
-          logo="/images/hubspot.svg"
-          logoAlt="HubSpot Logo"
-          duration="Full Time - Present"
-          title="Engineering at"
-          company="HubSpot"
-          onLinkClick={() => handleLinkClick('HubSpot Link')}
+          dateRange="March 24, 2025 – May 16, 2025"
+          logo={MinijustLogo}
+          logoAlt="MINIJUST Logo"
+          duration="Full Time  - 3 month"
+          title="Software Developer Intern at"
+          company="MINIJUST"
+          description="Enhanced and maintained the UPR LC system for Rwanda’s Ministry of Justice, adding key Reporter permissions, debugging the Django backend, performing code reviews to the system supporting 72+ institutions for reliable human rights coordination."
+          url="https://www.minijust.gov.rw/"
+          onLinkClick={() => handleLinkClick('MINIJUST Link')}
         />
 
         <ExperienceItem
-          dateRange="Jun '24 - Feb'25"
-          logo={uopxLogo}
-          logoAlt="University of Phoenix Logo"
-          duration="Full Time - 9 months"
-          title="Engineer II at"
-          company="University of Phoenix"
-          onLinkClick={() => handleLinkClick('UOPX Link')}
-        />
-
-        <ExperienceItem
-          dateRange="May '23 - Apr '24"
-          logo={uopxLogo}
-          logoAlt="University of Rwanda Logo"
-          duration="Internship - 1 year"
-          title="Software Engineer at"
-          company="University of Rwanda"
-          description="I developed ,,,,."
-          onLinkClick={() => handleLinkClick('UOPX Link')}
-        />
-
-        <ExperienceItem
-          dateRange="Jan '22 - Jun '22"
-          logo={hackerrankLogo}
-          logoAlt="Hackerrank Logo"
-          duration="Internship - 6 months"
-          title="Software Engineer at"
-          company="HackerRank"
-          description="I contributed ..."
-          onLinkClick={() => handleLinkClick('Hackerrank Link')}
-        />
-
-        <ExperienceItem
-          dateRange="Apr '21 - Jun '21"
-          logo={hmsLogo}
-          logoAlt="100ms Logo"
-          duration="Internship - 3 months"
-          title="Software Engineer at"
-          company="100ms"
-          description="I worked with ....., Vercel and AWS."
-          onLinkClick={() => handleLinkClick('100ms Link')}
-        />
-
-        <ExperienceItem
-          dateRange="Jun '20 - Mar '21"
-          logo={webmateLogo}
-          logoAlt="Webmate's Logo"
-          duration="Part-time - 9 months"
-          title="Co-founder at"
-          company="Webmate Web Services"
-          description="Led the establis....."
-          onLinkClick={() => handleLinkClick('Webmate Link')}
+          dateRange="Sept 3, 2025 - Nov 20, 2025"
+          logo={WsaLogo}
+          logoAlt="WSA Logo"
+          duration="Part Time  - 3 month"
+          title="Software Developer Intern at"
+          company="	Webstack Academy"
+          description="Built and launched HomelyHub, a full-stack MERN web app for real estate and hotel bookings, featuring secure user authentication, dynamic property search, booking system, and responsive React UI."
+          url="https://webstackacademy.com/"
+          onLinkClick={() => handleLinkClick('WSA Link')}
         />
 
         <div

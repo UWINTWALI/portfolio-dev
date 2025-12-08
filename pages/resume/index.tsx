@@ -69,11 +69,11 @@ const Resume: NextPage<{ resumeVersion: string }> = ({ resumeVersion }) => {
           <h1 className="text-3xl font-bold tracking-tight">Resume</h1>
         </div>
         <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-          Download my complete resume or view it directly in your browser.
-          Updated with my latest experience and skills.
+          Download my full resume or view it online. This version includes my
+          latest experience and skills.
         </p>
         <Badge variant="secondary" className="mt-2">
-          Last Updated: 08/09/2024
+          Last Updated: 08/12/2025
         </Badge>
       </div>
 
@@ -93,7 +93,7 @@ const Resume: NextPage<{ resumeVersion: string }> = ({ resumeVersion }) => {
               </Button>
             </TooltipTrigger>
             <TooltipContent>
-              <p>Open PDF in a new tab for better viewing experience</p>
+              <p>For the best experience, open PDF in a new tab</p>
             </TooltipContent>
           </Tooltip>
         </TooltipProvider>

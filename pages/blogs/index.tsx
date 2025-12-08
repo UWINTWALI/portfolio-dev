@@ -12,6 +12,7 @@ type Props = {
   blogList: Array<{
     slug: string;
     frontmatter: FrontMatter;
+    url?: string;
   }>;
 };
 
@@ -23,18 +24,24 @@ const Blogs: NextPage<Props> = ({ blogList }) => {
   return (
     <>
       <div className="mx-20 px-6 py-6">
-        {blogList.map(({ slug, frontmatter }) => {
-          return <BlogPost key={slug} link={slug} frontmatter={frontmatter} />;
+        {blogList.map(({ slug, frontmatter, url }) => {
+          // pass external url as `link` so BlogPost will render external anchor
+          const linkProp = url ?? slug;
+          return (
+            <BlogPost key={slug} link={linkProp} frontmatter={frontmatter} />
+          );
         })}
       </div>
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-        <Image
-          width={900}
-          height={500}
-          src="/undercons.gif"
-          alt="underconstruction gif"
-        />
-      </div>
+      {blogList.length === 0 && (
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+          <Image
+            width={900}
+            height={500}
+            src="/undercons.gif"
+            alt="underconstruction gif"
+          />
+        </div>
+      )}
     </>
   );
 };
@@ -42,9 +49,11 @@ const Blogs: NextPage<Props> = ({ blogList }) => {
 export default Blogs;
 
 export async function getStaticProps() {
-  const blogs = fs.readdirSync(path.join('blogs'));
-  console.log(blogs);
-  const blogList = blogs
+  const blogs = fs.existsSync(path.join('blogs'))
+    ? fs.readdirSync(path.join('blogs'))
+    : [];
+
+  const localList = blogs
     .map(blog => {
       const slug = blog.replace('.mdx', '');
       const fileData = fs.readFileSync(path.join('blogs', blog), 'utf-8');
@@ -63,13 +72,44 @@ export async function getStaticProps() {
           title,
           publishedAt,
         },
-      };
+      } as { slug: string; frontmatter: FrontMatter };
     })
     .filter(Boolean) as Array<{ slug: string; frontmatter: FrontMatter }>;
 
+  // Always try to fetch Dev.to articles to include alongside local posts.
+  let externalList: Array<{
+    slug: string;
+    frontmatter: FrontMatter;
+    url?: string;
+  }> = [];
+  try {
+    const username = 'uwintwalijean';
+    const res = await fetch(`https://dev.to/api/articles?username=${username}`);
+    if (res.ok) {
+      const articles = await res.json();
+      externalList = articles.map((a: any) => ({
+        // create a unique slug for external posts to avoid clashes
+        slug: `devto-${a.id ?? a.slug}`,
+        frontmatter: {
+          title: a.title,
+          publishedAt: Math.floor(new Date(a.published_at).getTime() / 1000),
+        },
+        url: a.url || `https://dev.to/${username}/${a.slug}`,
+      }));
+    }
+  } catch (err) {
+    console.warn('Failed fetching Dev.to articles', err);
+  }
+
+  // Merge local + external and sort by publishedAt descending
+  const combined = [...localList, ...externalList].sort(
+    (a, b) => b.frontmatter.publishedAt - a.frontmatter.publishedAt
+  );
+
   return {
     props: {
-      blogList,
+      blogList: combined,
     },
+    revalidate: 3600,
   };
 }

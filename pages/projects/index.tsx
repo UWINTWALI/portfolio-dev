@@ -71,9 +71,9 @@ const Projects: NextPage<Props> = () => {
           Projects
         </h1>
         <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-          A collection of projects showcasing my journey in software
-          development, from web applications to browser extensions and data
-          visualizations.
+          Explore my projects: a journey through software development, from
+          building full-stack web applications to exploring the fundamentals of
+          AI and machine learning.
         </p>
       </div>
 
