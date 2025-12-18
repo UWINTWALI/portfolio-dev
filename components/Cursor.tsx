@@ -23,7 +23,8 @@ export default function Cursor() {
           height: `${size}px`,
           transform: `translate3d(${cursor.x - size / 2}px, ${cursor.y - size / 2}px, 0)`,
           borderRadius: '50%',
-          background: 'conic-gradient(from 0deg, #FFD700, #4FC3F7, #FFFFFF, #FFD700)',
+          background:
+            'conic-gradient(from 0deg, #FFD700, #4FC3F7, #FFFFFF, #FFD700)',
           mask: 'radial-gradient(circle, transparent 60%, black 70%)',
           WebkitMask: 'radial-gradient(circle, transparent 60%, black 70%)',
           animation: 'spin 3s linear infinite',
@@ -38,7 +39,8 @@ export default function Cursor() {
           height: `${size}px`,
           transform: `translate3d(${cursor.x - size / 2}px, ${cursor.y - size / 2}px, 0)`,
           borderRadius: '50%',
-          background: 'radial-gradient(circle at center, rgba(255, 255, 255, 0.1) 0%, rgba(255, 215, 0, 0.05) 70%, transparent 100%)',
+          background:
+            'radial-gradient(circle at center, rgba(255, 255, 255, 0.1) 0%, rgba(255, 215, 0, 0.05) 70%, transparent 100%)',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
@@ -65,10 +67,20 @@ export default function Cursor() {
       <style jsx>{`
         @keyframes spin {
           from {
-            transform: translate3d(${cursor.x - size / 2}px, ${cursor.y - size / 2}px, 0) rotate(0deg);
+            transform: translate3d(
+                ${cursor.x - size / 2}px,
+                ${cursor.y - size / 2}px,
+                0
+              )
+              rotate(0deg);
           }
           to {
-            transform: translate3d(${cursor.x - size / 2}px, ${cursor.y - size / 2}px, 0) rotate(360deg);
+            transform: translate3d(
+                ${cursor.x - size / 2}px,
+                ${cursor.y - size / 2}px,
+                0
+              )
+              rotate(360deg);
           }
         }
       `}</style>

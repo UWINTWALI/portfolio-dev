@@ -28,12 +28,12 @@ interface ThemeOption {
 }
 
 const themeOptions: ThemeOption[] = [
-  {
-    name: 'default',
-    displayName: 'Default',
-    icon: Sparkles,
-    description: 'Classic theme',
-  },
+  // {
+  //   name: 'default',
+  //   displayName: 'Default',
+  //   icon: Sparkles,
+  //   description: 'Classic theme',
+  // },
   {
     name: 'fire',
     displayName: 'Fire',

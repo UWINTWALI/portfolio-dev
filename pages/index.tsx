@@ -183,8 +183,15 @@ const Home: NextPage = () => {
           </Button>
         </div>
         <div className="text-muted-foreground font-light mt-2 mb-4">
-          For over 2 years, I have specialized in <span className="">developing software products that work reliably in real-world operations</span>,
-with a strong focus on the user experience. In every project, I design intuitive interfaces, implement robust functionality, and thoroughly test the product to ensure it meets both business objectives and user expectations.
+          For over 2 years, I have specialized in{' '}
+          <span className="">
+            developing software products that work reliably in real-world
+            operations
+          </span>
+          , with a strong focus on the user experience. In every project, I
+          design intuitive interfaces, implement robust functionality, and
+          thoroughly test the product to ensure it meets both business
+          objectives and user expectations.
         </div>
         <Separator className="my-4" />
         <ExperienceItem
