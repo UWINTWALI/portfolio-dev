@@ -3,7 +3,7 @@
     "title": "High Traffic Recipe Prediction Model",
     "tagline": "Engineered a classification model to predict high traffic recipes for a company website’s homepage, achieving 82.6% recall to correctly identify 4 out of 5 high potential recipes. Delivered a data driven solution to boost user engagement and drive subscriptions.",
     "year": 2026,
-    "badges": ["Python","Scikit-learn", "Pandas", "Random Forest"],
+    "badges": ["Python", "Scikit-learn", "Pandas", "Random Forest"],
     "github_url": "https://github.com/UWINTWALI/top_menu_items_on_homepage_prediction.git",
     "demo_url": "",
     "stars": 10,
@@ -14,7 +14,13 @@
     "title": "Customer Churn Prediction for Banks",
     "tagline": "A machine learning web app that predicts at-risk bank customers to support proactive retention strategies.",
     "year": 2026,
-    "badges": ["Python", "CSS", "Scikit-learn", "Pandas", "Logistic Regression" ],
+    "badges": [
+      "Python",
+      "CSS",
+      "Scikit-learn",
+      "Pandas",
+      "Logistic Regression"
+    ],
     "github_url": "https://github.com/UWINTWALI/ml_bank_churn_pred.git",
     "demo_url": "https://ml-customer-churn-pred.streamlit.app/",
     "stars": 10,

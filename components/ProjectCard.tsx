@@ -62,7 +62,7 @@ export default function ProjectCard(props: ProjectCardProps) {
       </CardHeader>
 
       <CardContent>
-        <div className="flex flex-wrap gap-1 justify-start items-center">          
+        <div className="flex flex-wrap gap-1 justify-start items-center">
           {props.badges.map((badge, i) => {
             const key = badge.toLowerCase();
             const src = badgeImage[key];
