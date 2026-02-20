@@ -62,7 +62,7 @@ export default function ProjectCard(props: ProjectCardProps) {
       </CardHeader>
 
       <CardContent>
-        <div className="flex custom-scroll-bar-y justify-start items-center">
+        <div className="flex flex-wrap gap-1 justify-start items-center">          
           {props.badges.map((badge, i) => {
             const key = badge.toLowerCase();
             const src = badgeImage[key];
@@ -78,7 +78,7 @@ export default function ProjectCard(props: ProjectCardProps) {
             }
             // fallback to a styled Badge when there is no image mapping
             return (
-              <Badge key={i} variant="secondary" className="m-1">
+              <Badge key={i} className="m-1 bg-gray-600 text-white border-none">
                 {badge}
               </Badge>
             );
