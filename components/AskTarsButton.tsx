@@ -79,7 +79,7 @@ export default function AskTarsButton({
               </Button>
             </TooltipTrigger>
             <TooltipContent side="bottom">
-              <p>Clear Tars History</p>
+              <p>Clear History</p>
             </TooltipContent>
           </Tooltip>
           <Badge
@@ -130,7 +130,7 @@ export default function AskTarsButton({
             </Button>
           </TooltipTrigger>
           <TooltipContent side="bottom">
-            <p>Ask an AI assistant about Jean</p>
+            <p>Chat with Portfolio Assistant</p>
           </TooltipContent>
         </Tooltip>
         <Badge

@@ -49,7 +49,7 @@ const SAMPLE_QUESTIONS = [
 const Gpt: NextPage = () => {
   useEffect(() => {
     // google analytics
-    ReactGA.send({ hitType: 'pageview', page: '/tars', title: 'Tars' });
+    ReactGA.send({ hitType: 'pageview', page: '/tars', title: 'Portfolio Assistant' });
   }, []);
 
   const [isServerUp, setIsServerUp] = useState(false);
@@ -116,7 +116,7 @@ const Gpt: NextPage = () => {
   }, []);
 
   useEffect(() => {
-    fetch(process.env.NEXT_PUBLIC_TARS_ENDPOINT || '', {
+    fetch('/api/tarsHealth', {
       method: 'GET',
     })
       .then(response => response.status)
@@ -156,15 +156,12 @@ const Gpt: NextPage = () => {
   }, [history]);
 
   const fetchResponse = async (newQuery: string) => {
-    const myHeaders = new Headers();
-    myHeaders.append('Content-Type', 'application/json');
-
-    return await fetch(`${process.env.NEXT_PUBLIC_TARS_ENDPOINT}/api`, {
+    return await fetch('/api/tars', {
       method: 'POST',
-      headers: myHeaders,
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         query: newQuery,
-        session_id: sessionId,
+        history,
       }),
     })
       .then(response => {
@@ -241,7 +238,7 @@ const Gpt: NextPage = () => {
         <div className="flex items-center gap-3">
           <Avatar title="tars" url={tarsIcon.src} width="w-8" height="h-8" />
           <div>
-            <h1 className="font-semibold text-foreground">TARS</h1>
+            <h1 className="font-semibold text-foreground">Portfolio Assistant</h1>
             <p
               className={`text-sm font-medium ${
                 isServerUp ? 'text-green-500' : 'text-red-500'
@@ -275,7 +272,7 @@ const Gpt: NextPage = () => {
                 {isServerUp ? (
                   <>
                     <div className="Arialic_Hollow text-3xl text-foreground">
-                      Hey I'm TARS!
+                      Hey I'm your Portfolio Assistant!
                     </div>
                     <p className="text-muted-foreground">
                       I'm here to help you get to know Jean de Dieu better. Ask
