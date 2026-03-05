@@ -8,5 +8,5 @@ export function middleware(req: NextRequest, ev: NextFetchEvent) {
 
 export const config = {
   // Example: Apply the middleware only to auth or API routes if needed
-  matcher: '/(api|projects|resume|blogs|tars|_next/static|_next/image)',
+  matcher: '/(api|projects|resume|blogs|assistant|_next/static|_next/image)',
 };

@@ -16,14 +16,14 @@ import {
 } from '@/components/ui/tooltip';
 import { toast } from 'sonner';
 
-import tarsIcon from '../../images/tars.png';
+import assistantIcon from '../../images/assistant.png';
 import { v4 as uuidv4 } from 'uuid';
 
-export const LOCAL_HISTORY_KEY = 'tars-history';
-export const LOCAL_SESSION_KEY = 'session-id-tars';
+export const LOCAL_HISTORY_KEY = 'assistant-history';
+export const LOCAL_SESSION_KEY = 'session-id-assistant';
 
 type History = {
-  from: 'user' | 'tars';
+  from: 'user' | 'assistant';
   message: string;
   timestamp?: number;
 };
@@ -49,7 +49,11 @@ const SAMPLE_QUESTIONS = [
 const Gpt: NextPage = () => {
   useEffect(() => {
     // google analytics
-    ReactGA.send({ hitType: 'pageview', page: '/tars', title: 'Portfolio Assistant' });
+    ReactGA.send({
+      hitType: 'pageview',
+      page: '/assistant',
+      title: 'Portfolio Assistant',
+    });
   }, []);
 
   const [isServerUp, setIsServerUp] = useState(false);
@@ -108,15 +112,15 @@ const Gpt: NextPage = () => {
       clearChatHistory();
     };
 
-    window.addEventListener('clearTarsHistory', handleClearHistory);
+    window.addEventListener('clearAssistantHistory', handleClearHistory);
 
     return () => {
-      window.removeEventListener('clearTarsHistory', handleClearHistory);
+      window.removeEventListener('clearAssistantHistory', handleClearHistory);
     };
   }, []);
 
   useEffect(() => {
-    fetch('/api/tarsHealth', {
+    fetch('/api/assistantHealth', {
       method: 'GET',
     })
       .then(response => response.status)
@@ -156,7 +160,7 @@ const Gpt: NextPage = () => {
   }, [history]);
 
   const fetchResponse = async (newQuery: string) => {
-    return await fetch('/api/tars', {
+    return await fetch('/api/assistant', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -177,7 +181,7 @@ const Gpt: NextPage = () => {
       });
   };
 
-  const pushQueryToHistory = (from: 'user' | 'tars', newQuery: string) => {
+  const pushQueryToHistory = (from: 'user' | 'assistant', newQuery: string) => {
     setHistory(oldHistory => [
       ...oldHistory,
       {
@@ -204,13 +208,13 @@ const Gpt: NextPage = () => {
     setQueryProcessing(true);
     ReactGA.event({
       category: 'Button.Click',
-      action: 'Tars Query submit',
+      action: 'Assistant Query submit',
       label: newQuery,
     });
     const response: string = await fetchResponse(newQuery);
     setQueryProcessing(false);
     pushQueryToHistory(
-      'tars',
+      'assistant',
       !response
         ? 'Sorry, I am not feeling well today, please come back later.'
         : response
@@ -236,9 +240,16 @@ const Gpt: NextPage = () => {
       {/* Header */}
       <div className="border-b border-border p-2 py-4 flex items-center justify-between flex-shrink-0">
         <div className="flex items-center gap-3">
-          <Avatar title="tars" url={tarsIcon.src} width="w-8" height="h-8" />
+          <Avatar
+            title="assistant"
+            url={assistantIcon.src}
+            width="w-8"
+            height="h-8"
+          />
           <div>
-            <h1 className="font-semibold text-foreground">Portfolio Assistant</h1>
+            <h1 className="font-semibold text-foreground">
+              Portfolio Assistant
+            </h1>
             <p
               className={`text-sm font-medium ${
                 isServerUp ? 'text-green-500' : 'text-red-500'
@@ -259,11 +270,11 @@ const Gpt: NextPage = () => {
                 message.from === 'user' ? (
                   <UserMessage key={index} message={message.message} />
                 ) : (
-                  <TarsMessage key={index} message={message.message} />
+                  <AssistantMessage key={index} message={message.message} />
                 )
               )}
               {queryProcessing && (
-                <TarsMessage message="Thinking..." isTyping={true} />
+                <AssistantMessage message="Thinking..." isTyping={true} />
               )}
             </>
           ) : (
@@ -373,7 +384,7 @@ function UserMessage({ message }: { message: string }) {
   );
 }
 
-function TarsMessage({
+function AssistantMessage({
   message,
   isTyping = false,
 }: {
@@ -383,7 +394,12 @@ function TarsMessage({
   return (
     <div className="flex justify-start">
       <div className="flex items-start gap-3 max-w-[80%]">
-        <Avatar title="tars" url={tarsIcon.src} width="w-8" height="h-8" />
+        <Avatar
+          title="assistant"
+          url={assistantIcon.src}
+          width="w-8"
+          height="h-8"
+        />
         <div className="bg-muted rounded-2xl rounded-bl-md px-4 py-2">
           {isTyping ? (
             <div className="flex items-center gap-1">

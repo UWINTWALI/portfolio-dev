@@ -87,7 +87,7 @@ const SYSTEM_PROMPT = `You are Portfolio Assistant, an AI assistant on Jean de D
 - Keep responses concise (2–4 sentences for simple questions, structured lists for complex ones)`;
 
 type HistoryItem = {
-  from: 'user' | 'tars';
+  from: 'user' | 'assistant';
   message: string;
 };
 
@@ -111,7 +111,9 @@ export default async function handler(
   try {
     const messages: Anthropic.MessageParam[] = [
       ...history.map(h => ({
-        role: (h.from === 'user' ? 'user' : 'assistant') as 'user' | 'assistant',
+        role: (h.from === 'user' ? 'user' : 'assistant') as
+          | 'user'
+          | 'assistant',
         content: h.message,
       })),
       { role: 'user' as const, content: query },
@@ -129,7 +131,7 @@ export default async function handler(
 
     return res.status(200).json({ response: text });
   } catch (error) {
-    console.error('TARS API error:', error);
+    console.error('Assistant API error:', error);
     return res.status(500).json({ response: '' });
   }
 }

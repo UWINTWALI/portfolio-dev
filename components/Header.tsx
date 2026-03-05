@@ -88,11 +88,11 @@ const Header = ({ currentLink = '', loading = false }) => {
         </Button>
       </Link>
       {mobile && (
-        <Link href="/tars" passHref>
+        <Link href="/assistant" passHref>
           <Button
             variant="link"
             onClick={onLinkClick}
-            className={`${currentLink === 'tars' ? 'text-primary' : 'text-muted-foreground'} ${mobile ? 'justify-start w-full text-lg h-12' : ''}`}
+            className={`${currentLink === 'assistant' ? 'text-primary' : 'text-muted-foreground'} ${mobile ? 'justify-start w-full text-lg h-12' : ''}`}
           >
             AI Assistant
           </Button>

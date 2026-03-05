@@ -10,9 +10,9 @@ import {
   TooltipTrigger,
 } from './ui/tooltip';
 import { cn } from '@/lib/utils';
-import tarsImage from '../images/tars.png';
+import assistantImage from '../images/assistant.png';
 
-export default function AskTarsButton({
+export default function AskAssistantButton({
   currentLink,
 }: {
   currentLink: string;
@@ -20,21 +20,23 @@ export default function AskTarsButton({
   const clientRouter = useRouter();
 
   const deleteChatSession = async () => {
-    const sessionId = localStorage.getItem('session-id-tars') || '';
-    const res = await fetch(`/api/deleteTarsSession?sessionId=${sessionId}`);
+    const sessionId = localStorage.getItem('session-id-assistant') || '';
+    const res = await fetch(
+      `/api/deleteAssistantSession?sessionId=${sessionId}`
+    );
     return res.status === 200;
   };
 
-  const handleClearTarsHistory = async () => {
+  const handleClearAssistantHistory = async () => {
     ReactGA.event({
       category: 'Button.Click',
-      action: 'Delete Tars Session Button',
+      action: 'Delete Assistant Session Button',
     });
-    localStorage.setItem('tars-history', '[]');
+    localStorage.setItem('assistant-history', '[]');
 
-    // Dispatch custom event for TARS page to listen to BEFORE the API call
-    if (currentLink === 'tars') {
-      window.dispatchEvent(new CustomEvent('clearTarsHistory'));
+    // Dispatch custom event for Assistant page to listen to BEFORE the API call
+    if (currentLink === 'assistant') {
+      window.dispatchEvent(new CustomEvent('clearAssistantHistory'));
     } else {
       clientRouter.reload();
     }
@@ -47,16 +49,16 @@ export default function AskTarsButton({
     }
   };
 
-  if (currentLink === 'tars') {
+  if (currentLink === 'assistant') {
     return (
       <TooltipProvider>
         <div className="hidden md:flex flex-col items-center">
           <Tooltip>
             <TooltipTrigger asChild>
               <Button
-                id="clear-tars-history-button"
+                id="clear-assistant-history-button"
                 data-cursor="true"
-                onClick={handleClearTarsHistory}
+                onClick={handleClearAssistantHistory}
                 variant="outline"
                 size="icon"
                 className={cn(
@@ -66,7 +68,7 @@ export default function AskTarsButton({
                 )}
               >
                 <div
-                  data-cursor="clear-tars-history-button"
+                  data-cursor="clear-assistant-history-button"
                   className="w-6 h-6 flex items-center justify-center"
                   style={{
                     maskImage: `url(/images/delete.svg)`,
@@ -99,14 +101,14 @@ export default function AskTarsButton({
         <Tooltip>
           <TooltipTrigger asChild>
             <Button
-              id="ask-tars-button"
+              id="ask-assistant-button"
               data-cursor="true"
               onClick={() => {
                 ReactGA.event({
                   category: 'Button.Click',
-                  action: 'Ask Tars Page Button',
+                  action: 'Ask Assistant Page Button',
                 });
-                clientRouter.push('/tars');
+                clientRouter.push('/assistant');
               }}
               variant="outline"
               size="icon"
@@ -117,10 +119,10 @@ export default function AskTarsButton({
               )}
             >
               <div
-                data-cursor="ask-tars-button"
+                data-cursor="ask-assistant-button"
                 className="w-full h-full flex items-center justify-center"
                 style={{
-                  maskImage: `url(${tarsImage.src})`,
+                  maskImage: `url(${assistantImage.src})`,
                   maskRepeat: 'no-repeat',
                   maskPosition: 'center',
                   maskSize: 'contain',

@@ -1,7 +1,7 @@
 import React from 'react';
 import { cn } from '@/lib/utils';
 import LikeCounter from './LikeCounter';
-import AskTarsButton from './AskTarsButton';
+import AskAssistantButton from './AskAssistantButton';
 import FloatingThemeSelectorLazy from './FloatingThemeSelectorLazy';
 
 interface FloatingButtonGroupProps {
@@ -27,8 +27,8 @@ export const FloatingButtonGroup: React.FC<FloatingButtonGroupProps> = ({
       {/* Floating Theme Selector - Middle */}
       <FloatingThemeSelectorLazy />
 
-      {/* Ask Tars Button - Bottom */}
-      <AskTarsButton currentLink={currentLink} />
+      {/* Ask Assistant Button - Bottom */}
+      <AskAssistantButton currentLink={currentLink} />
     </div>
   );
 };

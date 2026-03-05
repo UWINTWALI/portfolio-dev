@@ -53,7 +53,7 @@ function MyApp({ Component, pageProps }: AppProps) {
                 <Component {...pageProps} />
               </div>
             </div>
-            {currentLink !== 'tars' && <Footer />}
+            {currentLink !== 'assistant' && <Footer />}
             <FloatingButtonGroup currentLink={currentLink} />
           </Context>
         </SessionProvider>
