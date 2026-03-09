@@ -31,7 +31,9 @@ function getRemainingTime(): string {
 
 function recordEmailSent() {
   const emailTimestamps = localStorage.getItem('emailTimestamps');
-  const timestamps: number[] = emailTimestamps ? JSON.parse(emailTimestamps) : [];
+  const timestamps: number[] = emailTimestamps
+    ? JSON.parse(emailTimestamps)
+    : [];
   timestamps.push(Date.now());
   localStorage.setItem('emailTimestamps', JSON.stringify(timestamps));
 }
