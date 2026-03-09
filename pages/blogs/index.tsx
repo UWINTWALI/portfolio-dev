@@ -4,9 +4,9 @@ import fs from 'fs';
 import matter from 'gray-matter';
 import BlogPost from '../../components/BlogPost';
 import type FrontMatter from '../../interfaces/FrontMatter';
-import Image from 'next/image';
 import ReactGA from 'react-ga4';
 import { useEffect } from 'react';
+import { Separator } from '@/components/ui/separator';
 
 type Props = {
   blogList: Array<{
@@ -18,31 +18,45 @@ type Props = {
 
 const Blogs: NextPage<Props> = ({ blogList }) => {
   useEffect(() => {
-    // google analytics
     ReactGA.send({ hitType: 'pageview', page: '/blogs', title: 'Blogs page' });
   }, []);
+
   return (
-    <>
-      <div className="mx-20 px-6 py-6">
-        {blogList.map(({ slug, frontmatter, url }) => {
-          // pass external url as `link` so BlogPost will render external anchor
-          const linkProp = url ?? slug;
-          return (
-            <BlogPost key={slug} link={linkProp} frontmatter={frontmatter} />
-          );
-        })}
+    <div className="relative my-10 sm:my-20">
+      {/* Page Header */}
+      <div className="mt-10 sm:mt-20">
+        <div className="text-4xl sm:text-5xl font-medium">Blogs</div>
+        <p className="text-muted-foreground font-light mt-4">
+          {blogList.length > 0
+            ? `${blogList.length} article${blogList.length === 1 ? '' : 's'} — thoughts on software, AI, and what I'm building.`
+            : 'Articles coming soon — check back later.'}
+        </p>
       </div>
-      {blogList.length === 0 && (
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-          <Image
-            width={900}
-            height={500}
-            src="/undercons.gif"
-            alt="underconstruction gif"
-          />
+
+      <Separator className="my-8" />
+
+      {/* Blog List */}
+      {blogList.length > 0 ? (
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
+          {blogList.map(({ slug, frontmatter, url }) => {
+            const linkProp = url ?? slug;
+            return (
+              <BlogPost key={slug} link={linkProp} frontmatter={frontmatter} />
+            );
+          })}
+        </div>
+      ) : (
+        <div className="flex flex-col items-center justify-center py-32 text-center gap-4">
+          <div className="text-6xl">✍️</div>
+          <div className="text-xl font-medium text-foreground">
+            No articles yet
+          </div>
+          <p className="text-muted-foreground font-light max-w-sm">
+            I'm working on some posts. Come back soon!
+          </p>
         </div>
       )}
-    </>
+    </div>
   );
 };
 
@@ -68,15 +82,11 @@ export async function getStaticProps() {
       if (!title || !publishedAt) return null;
       return {
         slug,
-        frontmatter: {
-          title,
-          publishedAt,
-        },
+        frontmatter: { title, publishedAt },
       } as { slug: string; frontmatter: FrontMatter };
     })
     .filter(Boolean) as Array<{ slug: string; frontmatter: FrontMatter }>;
 
-  // Always try to fetch Dev.to articles to include alongside local posts.
   let externalList: Array<{
     slug: string;
     frontmatter: FrontMatter;
@@ -88,7 +98,6 @@ export async function getStaticProps() {
     if (res.ok) {
       const articles = await res.json();
       externalList = articles.map((a: any) => ({
-        // create a unique slug for external posts to avoid clashes
         slug: `devto-${a.id ?? a.slug}`,
         frontmatter: {
           title: a.title,
@@ -101,15 +110,12 @@ export async function getStaticProps() {
     console.warn('Failed fetching Dev.to articles', err);
   }
 
-  // Merge local + external and sort by publishedAt descending
   const combined = [...localList, ...externalList].sort(
     (a, b) => b.frontmatter.publishedAt - a.frontmatter.publishedAt
   );
 
   return {
-    props: {
-      blogList: combined,
-    },
+    props: { blogList: combined },
     revalidate: 3600,
   };
 }

@@ -1,4 +1,15 @@
 [
+   {
+    "title": "E-Commerce Product Quantity Forecasting",
+    "tagline": "Built a time-series regression model for a multinational e-commerce S&OP team to forecast product quantities sold by country and stock code. Split data on 2011-09-25, engineered temporal and categorical features, and evaluated with MAE to predict week-39 demand for end-of-year inventory planning.",
+    "year": 2026,
+    "badges": ["Python", "Scikit-learn", "Pandas", "Regression", "Time Series"],
+    "github_url": "https://github.com/UWINTWALI/pyspark-retail-demand-forecasting.git",
+    "demo_url": "",
+    "stars": 10,
+    "priority": 8,
+    "category": "Data Science"
+  },
   {
     "title": "High Traffic Recipe Prediction Model",
     "tagline": "Engineered a classification model to predict high traffic recipes for a company website’s homepage, achieving 82.6% recall to correctly identify 4 out of 5 high potential recipes. Delivered a data driven solution to boost user engagement and drive subscriptions.",
@@ -24,7 +35,7 @@
     "github_url": "https://github.com/UWINTWALI/ml_bank_churn_pred.git",
     "demo_url": "https://ml-customer-churn-pred.streamlit.app/",
     "stars": 10,
-    "priority": 1,
+    "priority": 8,
     "category": "Data Science"
   },
   {

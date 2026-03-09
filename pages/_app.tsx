@@ -6,7 +6,6 @@ import { useEffect, useState } from 'react';
 import Router, { useRouter } from 'next/router';
 import Footer from '../components/Footer';
 import { SessionProvider } from 'next-auth/react';
-import Cursor from '../components/Cursor';
 import { ThemeProvider } from '@/components/ThemeProvider';
 import { Toaster } from '@/components/ui/sonner';
 import FloatingButtonGroup from '../components/FloatingButtonGroup';
@@ -46,8 +45,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       >
         <SessionProvider session={pageProps.session}>
           <Context>
-            <Cursor />
-            <Header loading={loading} currentLink={currentLink} />
+<Header loading={loading} currentLink={currentLink} />
             <div className="w-full flex justify-center">
               <div className=" px-4 w-full sm:w-[600px] md:w-[700px] lg:w-[800px] xl:w-[1000px] 2xl:w-[1200px]">
                 <Component {...pageProps} />

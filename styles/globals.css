@@ -53,14 +53,6 @@
   }
 }
 
-* {
-  cursor: none;
-}
-
-button {
-  cursor: none;
-}
-
 .btnWithSlider {
   --button-text-color: white;
   --button-text-color-hover: white;

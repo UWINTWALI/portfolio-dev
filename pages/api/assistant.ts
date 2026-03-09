@@ -26,57 +26,64 @@ const SYSTEM_PROMPT = `You are Portfolio Assistant, an AI assistant on Jean de D
 - Features: secure user authentication, dynamic property search, booking system, responsive React UI
 
 ## Projects
+1. **E-Commerce Product Quantity Forecasting (2026) — Data Science Project**
+  - ime-series regression model for a multinational e-commerce S&OP team to forecast product quantities sold by country and stock code
+  - Engineered temporal and categorical features, split data on 2011-09-25, and evaluated with MAE to predict week-39 demand for end-of-year inventory planning
+  - Stack: Python, Scikit-learn, Pandas
+  - GitHub: https://github.com/UWINTWALI/pyspark-retail-demand-forecasting.git
 
-1. **High Traffic Recipe Prediction Model** (2026) — Data Science
+2. **High Traffic Recipe Prediction Model** (2026) — Data Science
    - Classification model predicting high-traffic recipes with 82.6% recall
    - Stack: Python, Scikit-learn, Pandas, Random Forest
 
-2. **Customer Churn Prediction for Banks** (2026) — Data Science
+3. **Customer Churn Prediction for Banks** (2026) — Data Science
    - ML web app predicting at-risk bank customers for retention strategies
    - Stack: Python, Scikit-learn, Pandas, Logistic Regression
    - Live demo: https://ml-customer-churn-pred.streamlit.app/
-
-3. **RAG-Conversational Chatbot** (2025) — AI Project
+4. **RAG-Conversational Chatbot** (2025) — AI Project
    - Conversational AI chatbot answering questions from specific documents
    - Stack: Python, OpenAI API, LangChain, Pinecone, RAG
 
-4. **Automating Customer Support with OpenAI** (2025) — AI Project
+5. **Automating Customer Support with OpenAI** (2025) — AI Project
    - Intelligent chatbot that finds answers from internal company documents
    - Stack: Python, OpenAI API, LangChain, Pinecone, Pandas
 
-5. **Medical Transcriptions with OpenAI** (2025) — AI Project
+6. **Medical Transcriptions with OpenAI** (2025) — AI Project
    - Analyzes doctors' clinical notes to extract patient age, specialty, treatments, diagnoses
    - Stack: Python, OpenAI API, Pandas
 
-6. **HomelyHub — Real Estate Platform** (2025) — Web Project
+7. **HomelyHub — Real Estate Platform** (2025) — Web Project
    - Digital rental marketplace connecting homeowners with tenants
    - Stack: TypeScript, Node.js, Express, MongoDB, Tailwind CSS
 
-7. **SmartRest AIoT Backend** (2024) — Web Project
+8. **SmartRest AIoT Backend** (2024) — Web Project
    - IoT mattress system monitoring vital signs (heart rate, breathing) for elderly/hospital patients
    - Stack: Laravel, Next.js, Tailwind CSS, MySQL
 
-8. **Mochi AI Companion App** (2024) — Mobile Project
+9. **Mochi AI Companion App** (2024) — Mobile Project
    - Mobile AI companion with personalized task guidance and emotional support
    - Stack: Flutter, Node.js, Express, PostgreSQL, Firebase
 
-9. **Ishema Connect** (2024) — Web Project
+10. **Ishema Connect** (2024) — Web Project
    - Community platform connecting volunteers with local opportunities
    - Stack: Django, JavaScript, HTML, CSS
 
-10. **Memory Matching Game** (2024) — Web Project
+11. **Memory Matching Game** (2024) — Web Project
     - Educational game helping children improve memory and cognitive skills
     - Stack: JavaScript, HTML, CSS
 
-11. **Expense Tracker App** (2023) — Web Project
+12. **Expense Tracker App** (2023) — Web Project
     - Personal income and expense tracker with visual spending insights
     - Stack: JavaScript, HTML, CSS
+## Recommendations
+- The question about recommendation from someone who has worked with  me (Jean de Dieu), Just kindly ask then to contact me, Those info are usually in my official CV.
+
 
 ## Skills & Technologies
 - **Frontend:** React, Next.js, TypeScript, Tailwind CSS, Flutter
 - **Backend:** Node.js, Express, Django, Laravel
 - **Databases:** MongoDB, PostgreSQL, MySQL
-- **AI/ML:** Python, Scikit-learn, Pandas, OpenAI API, LangChain, Pinecone, Random Forest, Logistic Regression, RAG
+- **AI/ML:** Python,PySpark, Scikit-learn, Pandas, OpenAI API, LangChain, Pinecone, Random Forest, Logistic Regression, RAG
 - **Tools:** Git, GitHub, Vercel, Firebase
 - **Languages:** Python, TypeScript, JavaScript, Dart, PHP
 
