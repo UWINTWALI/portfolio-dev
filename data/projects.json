@@ -1,13 +1,36 @@
 [
-   {
-    "title": "E-Commerce Product Quantity Forecasting",
-    "tagline": "Built a time-series regression model for a multinational e-commerce S&OP team to forecast product quantities sold by country and stock code. Split data on 2011-09-25, engineered temporal and categorical features, and evaluated with MAE to predict week-39 demand for end-of-year inventory planning.",
+  {
+    "title": "E-Commerce Demand Forecasting Model",
+    "tagline": "Built a demand forecasting model on 384,721 records across 13 feature to help Sales and operation team to prepare for end of year inventory planning. Using PySpark and a Random Forest Regressor, the Model predicted around 52,393 units will be sold in Week 39  weekly with MAE of 5.3 units per product per day, giving the business an approximate and data backed desired stock ahead of time.",
     "year": 2026,
     "badges": ["Python", "Scikit-learn", "Pandas", "Regression", "Time Series"],
     "github_url": "https://github.com/UWINTWALI/pyspark-retail-demand-forecasting.git",
     "demo_url": "",
+    "pdf_url": "sales_forecasting_big_data_project.pdf",
+    "pdf_url": "sop_report.pdf",
     "stars": 10,
     "priority": 8,
+    "category": "Data Science"
+  },
+  {
+    "title": "Regularized Regression For Data Scientist",
+    "tagline": "Built OLS, Ridge (L2), and Lasso (L1) regression models for RealAgents, a real estate company, to predict house sale prices from property characteristics. Applied RidgeCV and LassoCV for automatic lambda tuning via 5-fold cross-validation, engineered numeric and categorical features using ColumnTransformer, evaluated models with RMSE, and deployed all artifacts into an interactive Streamlit app.",
+    "year": 2026,
+    "badges": [
+      "Python",
+      "Scikit-learn",
+      "Pandas",
+      "NumPy",
+      "Streamlit",
+      "Ridge Regression",
+      "Lasso Regression",
+      "Joblib"
+    ],
+    "github_url": "https://github.com/UWINTWALI/ridge-lasso-regularization.git",
+    "demo_url": "https://feature-selection-regularization-technique.streamlit.app/",
+    "pdf_url": "ridge_and_lasso_regression.pdf",
+    "stars": 7,
+    "priority": 7,
     "category": "Data Science"
   },
   {
@@ -34,6 +57,7 @@
     ],
     "github_url": "https://github.com/UWINTWALI/ml_bank_churn_pred.git",
     "demo_url": "https://ml-customer-churn-pred.streamlit.app/",
+    "pdf_url": "/projects/customer_churn.pdf",
     "stars": 10,
     "priority": 8,
     "category": "Data Science"

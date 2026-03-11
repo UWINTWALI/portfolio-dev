@@ -87,6 +87,15 @@ const Header = ({ currentLink = '', loading = false }) => {
           Resume
         </Button>
       </Link>
+      <Link href="/contact" passHref>
+        <Button
+          variant="link"
+          onClick={onLinkClick}
+          className={`${currentLink === 'contact' ? 'text-primary' : 'text-muted-foreground'} ${mobile ? 'justify-start w-full text-lg h-12' : ''}`}
+        >
+          Contact
+        </Button>
+      </Link>
       {mobile && (
         <Link href="/assistant" passHref>
           <Button

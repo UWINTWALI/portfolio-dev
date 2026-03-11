@@ -11,6 +11,8 @@ import {
 } from '@/components/ui/card';
 import ReactGA from 'react-ga4';
 import { Badge } from './ui/badge';
+import { useRouter } from 'next/router';
+import { FileText, BookOpen, ExternalLink } from 'lucide-react';
 
 export type ProjectCardProps = {
   title: string;
@@ -22,13 +24,43 @@ export type ProjectCardProps = {
   stars: number;
   priority: number;
   category: string;
+  /** Slug of a related local blog post (e.g. "my-post") or a full external URL */
+  article_slug?: string;
+  /** Path to a PDF in /public (e.g. "/projects/my-report.pdf") */
+  pdf_url?: string;
 };
 
 export default function ProjectCard(props: ProjectCardProps) {
   const [cardId, setCardId] = useState<string>('');
+  const router = useRouter();
+
   useEffect(() => {
     setCardId(props.title.replace(/\s/g, '-').toLowerCase());
   }, [props.title]);
+
+  const handleArticle = () => {
+    ReactGA.event({
+      category: 'Button.Click',
+      action: 'Project Article',
+      label: props.article_slug,
+    });
+    if (props.article_slug?.startsWith('http')) {
+      window.open(props.article_slug, '_blank');
+    } else {
+      router.push(`/blogs/${props.article_slug}`);
+    }
+  };
+
+  const handlePdf = () => {
+    ReactGA.event({
+      category: 'Button.Click',
+      action: 'Project PDF',
+      label: props.title,
+    });
+    router.push(
+      `/projects/pdf-viewer?url=${encodeURIComponent(props.pdf_url!)}&title=${encodeURIComponent(props.title)}`
+    );
+  };
 
   return (
     <Card className="flex flex-col justify-between transition-colors rounded-lg shadow">
@@ -76,7 +108,6 @@ export default function ProjectCard(props: ProjectCardProps) {
                 />
               );
             }
-            // fallback to a styled Badge when there is no image mapping
             return (
               <Badge key={i} className="m-1 bg-gray-600 text-white border-none">
                 {badge}
@@ -86,7 +117,7 @@ export default function ProjectCard(props: ProjectCardProps) {
         </div>
       </CardContent>
 
-      <CardFooter className="flex items-center">
+      <CardFooter className="flex flex-wrap items-center gap-2">
         {props.github_url && (
           <Button
             variant="outline"
@@ -98,33 +129,14 @@ export default function ProjectCard(props: ProjectCardProps) {
               });
               window.open(props.github_url, '_blank');
             }}
-            className="mx-1 flex-1 border-primary text-primary hover:bg-primary hover:text-primary-foreground"
+            className="flex-1 border-primary text-primary hover:bg-primary hover:text-primary-foreground"
             id={`view-project-button-${cardId}`}
           >
-            <span
-              data-cursor={`view-project-button-${cardId}`}
-              className="mr-2"
-            >
-              View Project
-            </span>
-            <svg
-              data-cursor={`view-project-button-${cardId}`}
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              width={'14px'}
-              height={'14px'}
-              fill={'currentcolor'}
-            >
-              <g data-name="Layer 2">
-                <g data-name="external-link">
-                  <rect width="24" height="24" opacity="0"></rect>
-                  <path d="M20 11a1 1 0 0 0-1 1v6a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h6a1 1 0 0 0 0-2H6a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3h12a3 3 0 0 0 3-3v-6a1 1 0 0 0-1-1z"></path>
-                  <path d="M16 5h1.58l-6.29 6.28a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0L19 6.42V8a1 1 0 0 0 1 1 1 1 0 0 0 1-1V4a1 1 0 0 0-1-1h-4a1 1 0 0 0 0 2z"></path>
-                </g>
-              </g>
-            </svg>
+            View Project
+            <ExternalLink className="ml-2 h-3.5 w-3.5" />
           </Button>
         )}
+
         {props.demo_url && (
           <Button
             variant="outline"
@@ -136,31 +148,35 @@ export default function ProjectCard(props: ProjectCardProps) {
               });
               window.open(props.demo_url, '_blank');
             }}
-            className="mx-1 flex-1"
+            className="flex-1"
             id={`demo-project-button-${cardId}`}
           >
-            <span
-              data-cursor={`demo-project-button-${cardId}`}
-              className="mr-2"
-            >
-              Demo
-            </span>
-            <svg
-              data-cursor={`demo-project-button-${cardId}`}
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              width={'14px'}
-              height={'14px'}
-              fill={'currentcolor'}
-            >
-              <g data-name="Layer 2">
-                <g data-name="external-link">
-                  <rect width="24" height="24" opacity="0"></rect>
-                  <path d="M20 11a1 1 0 0 0-1 1v6a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h6a1 1 0 0 0 0-2H6a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3h12a3 3 0 0 0 3-3v-6a1 1 0 0 0-1-1z"></path>
-                  <path d="M16 5h1.58l-6.29 6.28a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0L19 6.42V8a1 1 0 0 0 1 1 1 1 0 0 0 1-1V4a1 1 0 0 0-1-1h-4a1 1 0 0 0 0 2z"></path>
-                </g>
-              </g>
-            </svg>
+            Demo
+            <ExternalLink className="ml-2 h-3.5 w-3.5" />
+          </Button>
+        )}
+
+        {props.article_slug && (
+          <Button
+            variant="outline"
+            onClick={handleArticle}
+            className="flex-1"
+            id={`article-project-button-${cardId}`}
+          >
+            Article
+            <BookOpen className="ml-2 h-3.5 w-3.5" />
+          </Button>
+        )}
+
+        {props.pdf_url && (
+          <Button
+            variant="outline"
+            onClick={handlePdf}
+            className="flex-1"
+            id={`pdf-project-button-${cardId}`}
+          >
+            Read Paper
+            <FileText className="ml-2 h-3.5 w-3.5" />
           </Button>
         )}
       </CardFooter>
