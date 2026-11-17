@@ -57,6 +57,15 @@ const Header = ({ currentLink = '', loading = false }) => {
           onClick={onLinkClick}
           className={`${currentLink === '' ? 'text-primary' : 'text-muted-foreground'} ${mobile ? 'justify-start w-full text-lg h-12' : ''}`}
         >
+          Manifesto
+        </Button>
+      </Link>
+      <Link href="/home" passHref>
+        <Button
+          variant="link"
+          onClick={onLinkClick}
+          className={`${currentLink === 'home' ? 'text-primary' : 'text-muted-foreground'} ${mobile ? 'justify-start w-full text-lg h-12' : ''}`}
+        >
           Home
         </Button>
       </Link>

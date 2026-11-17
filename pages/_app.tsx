@@ -45,6 +45,11 @@ function MyApp({ Component, pageProps }: AppProps) {
       >
         <SessionProvider session={pageProps.session}>
           <Context>
+            {/* Site-wide grid background (colors follow the active theme) */}
+            <div
+              aria-hidden
+              className="site-grid pointer-events-none fixed inset-0 -z-10"
+            />
             <Header loading={loading} currentLink={currentLink} />
             <div className="w-full flex justify-center">
               <div className=" px-4 w-full sm:w-[600px] md:w-[700px] lg:w-[800px] xl:w-[1000px] 2xl:w-[1200px]">

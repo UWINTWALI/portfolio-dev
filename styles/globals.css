@@ -338,3 +338,27 @@
     flex-shrink: 1;
   }
 }
+
+/* Site-wide blueprint-style grid background.
+   Colors derive from the active theme's --foreground / --primary,
+   so the grid retints with every theme and light/dark mode. */
+.site-grid {
+  --grid-minor: color-mix(in srgb, var(--foreground) 11%, transparent);
+  --grid-major: color-mix(in srgb, var(--primary) 32%, transparent);
+  background-color: var(--background);
+  background-image:
+    linear-gradient(to right, var(--grid-major) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-major) 1px, transparent 1px),
+    linear-gradient(to right, var(--grid-minor) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-minor) 1px, transparent 1px);
+  background-size:
+    128px 128px,
+    128px 128px,
+    32px 32px,
+    32px 32px;
+  background-position: center top;
+}
+.dark .site-grid {
+  --grid-minor: color-mix(in srgb, var(--foreground) 13%, transparent);
+  --grid-major: color-mix(in srgb, var(--primary) 38%, transparent);
+}

@@ -30,6 +30,8 @@ export type ProjectCardProps = {
   pdf_url?: string;
 };
 
+const MAX_BADGES = 5;
+
 export default function ProjectCard(props: ProjectCardProps) {
   const [cardId, setCardId] = useState<string>('');
   const router = useRouter();
@@ -63,8 +65,8 @@ export default function ProjectCard(props: ProjectCardProps) {
   };
 
   return (
-    <Card className="flex flex-col justify-between transition-colors rounded-lg shadow">
-      <CardHeader>
+    <Card className="h-full flex flex-col transition-colors rounded-lg shadow hover:border-primary/50">
+      <CardHeader className="p-5 pb-3 space-y-2">
         <div className="flex items-center justify-between">
           <div className="text-primary">{props.year}</div>
           {props.stars ? (
@@ -85,42 +87,54 @@ export default function ProjectCard(props: ProjectCardProps) {
             </Badge>
           ) : null}
         </div>
-        <CardTitle className="text-lg sm:text-xl font-medium">
+        <CardTitle className="text-lg font-medium leading-snug line-clamp-2">
           {props.title}
         </CardTitle>
-        <CardDescription className="font-light">
+        <CardDescription
+          className="font-light line-clamp-4"
+          title={props.tagline}
+        >
           {props.tagline}
         </CardDescription>
       </CardHeader>
 
-      <CardContent>
-        <div className="flex flex-wrap gap-1 justify-start items-center">
-          {props.badges.map((badge, i) => {
+      <CardContent className="px-5 pb-4 pt-0 flex-1">
+        <div className="flex flex-wrap gap-1.5 justify-start items-center">
+          {props.badges.slice(0, MAX_BADGES).map((badge, i) => {
             const key = badge.toLowerCase();
             const src = badgeImage[key];
             if (src) {
               return (
                 <img
                   key={i}
-                  className="m-1 opacity-80"
+                  className="opacity-80"
                   src={src}
                   alt={`${badge} badge image`}
                 />
               );
             }
             return (
-              <Badge key={i} className="m-1 bg-gray-600 text-white border-none">
+              <Badge key={i} className="bg-gray-600 text-white border-none">
                 {badge}
               </Badge>
             );
           })}
+          {props.badges.length > MAX_BADGES && (
+            <Badge
+              variant="secondary"
+              title={props.badges.slice(MAX_BADGES).join(', ')}
+            >
+              +{props.badges.length - MAX_BADGES}
+            </Badge>
+          )}
         </div>
       </CardContent>
 
-      <CardFooter className="flex flex-wrap items-center gap-2">
+      <CardFooter className="flex flex-wrap items-center gap-2 px-5 pb-5 pt-0 mt-auto">
         {props.github_url && (
           <Button
             variant="outline"
+            size="sm"
             onClick={() => {
               ReactGA.event({
                 category: 'Button.Click',
@@ -140,6 +154,7 @@ export default function ProjectCard(props: ProjectCardProps) {
         {props.demo_url && (
           <Button
             variant="outline"
+            size="sm"
             onClick={() => {
               ReactGA.event({
                 category: 'Button.Click',
@@ -159,6 +174,7 @@ export default function ProjectCard(props: ProjectCardProps) {
         {props.article_slug && (
           <Button
             variant="outline"
+            size="sm"
             onClick={handleArticle}
             className="flex-1"
             id={`article-project-button-${cardId}`}
@@ -171,6 +187,7 @@ export default function ProjectCard(props: ProjectCardProps) {
         {props.pdf_url && (
           <Button
             variant="outline"
+            size="sm"
             onClick={handlePdf}
             className="flex-1"
             id={`pdf-project-button-${cardId}`}

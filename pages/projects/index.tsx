@@ -71,9 +71,9 @@ const Projects: NextPage<Props> = () => {
           Projects
         </h1>
         <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-          Explore my projects: a journey through software development, from
-          building full-stack web applications to exploring the fundamentals of
-          AI and machine learning.
+          Explore my projects in data science, machine learning and AI, from
+          forecasting and classification models to the software that puts them
+          in front of real users.
         </p>
       </div>
 
@@ -151,7 +151,7 @@ const Projects: NextPage<Props> = () => {
       </div>
 
       <Separator className="my-4" />
-      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 grid-rows-auto auto-rows-fr gap-x-5 gap-y-5">
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
         {customOrderedProjectList.map((project: ProjectCardProps, i) => (
           <ProjectCard key={i} {...project} />
         ))}
