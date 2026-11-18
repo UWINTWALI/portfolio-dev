@@ -215,9 +215,7 @@ const Gpt: NextPage = () => {
     setQueryProcessing(false);
     pushQueryToHistory(
       'assistant',
-      !response
-        ? 'The assistant is temporarily unavailable.'
-        : response
+      !response ? 'The assistant is temporarily unavailable.' : response
     );
     // Refresh questions after each response
     setSelectedQuestions(getRandomQuestions());
