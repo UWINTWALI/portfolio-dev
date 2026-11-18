@@ -216,7 +216,7 @@ const Gpt: NextPage = () => {
     pushQueryToHistory(
       'assistant',
       !response
-        ? 'Sorry, I am not feeling well today, please come back later.'
+        ? 'The assistant is temporarily unavailable.'
         : response
     );
     // Refresh questions after each response
