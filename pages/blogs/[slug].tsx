@@ -79,7 +79,11 @@ export default function BlogPostPage({
 }
 
 export async function getStaticPaths() {
-  const blogs = fs.readdirSync(path.join('blogs'));
+  // The blogs folder may not exist (no local posts) - build no pages then
+  const dir = path.join('blogs');
+  const blogs = fs.existsSync(dir)
+    ? fs.readdirSync(dir).filter(f => f.endsWith('.mdx'))
+    : [];
   const paths = blogs.map(blog => ({
     params: { slug: blog.replace('.mdx', '') },
   }));
