@@ -79,6 +79,25 @@ module.exports = {
       typography: (theme) => ({
         DEFAULT: {
           css: {
+            // Point every prose color at the theme variables so markdown
+            // (blog posts) follows light/dark mode instead of fixed grays
+            '--tw-prose-body': 'var(--foreground)',
+            '--tw-prose-headings': 'var(--foreground)',
+            '--tw-prose-lead': 'var(--muted-foreground)',
+            '--tw-prose-links': 'var(--primary)',
+            '--tw-prose-bold': 'var(--foreground)',
+            '--tw-prose-counters': 'var(--muted-foreground)',
+            '--tw-prose-bullets': 'var(--muted-foreground)',
+            '--tw-prose-hr': 'var(--border)',
+            '--tw-prose-quotes': 'var(--muted-foreground)',
+            '--tw-prose-quote-borders': 'var(--border)',
+            '--tw-prose-captions': 'var(--muted-foreground)',
+            '--tw-prose-kbd': 'var(--foreground)',
+            '--tw-prose-code': 'var(--foreground)',
+            '--tw-prose-pre-code': 'var(--foreground)',
+            '--tw-prose-pre-bg': 'var(--muted)',
+            '--tw-prose-th-borders': 'var(--border)',
+            '--tw-prose-td-borders': 'var(--border)',
             maxWidth: 'none',
             color: theme('colors.foreground'),
             h1: {

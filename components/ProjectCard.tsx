@@ -192,7 +192,7 @@ export default function ProjectCard(props: ProjectCardProps) {
             className="flex-1"
             id={`pdf-project-button-${cardId}`}
           >
-            Read Paper
+            More Details
             <FileText className="ml-2 h-3.5 w-3.5" />
           </Button>
         )}

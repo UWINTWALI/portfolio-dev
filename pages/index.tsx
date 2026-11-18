@@ -12,9 +12,7 @@ import {
   Compass,
   Rocket,
   CheckCircle2,
-  XCircle,
   ArrowRight,
-  BarChart3,
   ShieldAlert,
 } from 'lucide-react';
 
@@ -50,49 +48,38 @@ const priorities = [
   {
     icon: Network,
     title: 'Community of Practice',
-    tagline:
-      'A space where we learn, build and share knowledge regularly, not only at events.',
-    why: 'Regular, member-led sessions and a shared repository allow members to learn from one another and keep useful material from one term to the next.',
+    tagline: 'Learning from each other regularly, not only at big events.',
+    why: 'Many of us are working on interesting projects. Sharing them more often would help everyone learn, and keeping the material in one place would help the next team too.',
     program: 'Data Circles',
     programDetail:
-      'Fortnightly 60-minute sessions where a member presents a project, paper or tool. Topic-based study groups (ML, NLP, data engineering, analytics). A shared repository of notebooks and resources.',
-    measure: 'Active members (2+ sessions); member-led sessions',
-    target: '6 sessions per term · 40% of members active',
+      'Small, informal sessions where a member shows a project, paper or tool they have been working on. A shared folder where useful notebooks and resources are kept.',
   },
   {
     icon: Users,
     title: 'Gender Inclusion',
-    tagline: 'Every voice welcome and heard in data science.',
-    why: 'Inclusion can be seen in who presents and leads activities, not only in who attends them.',
+    tagline: 'Making sure everyone feels welcome to take part.',
+    why: 'Inclusion is not only about who attends. It is also about who gets the chance to present and lead.',
     program: 'Women in Data',
     programDetail:
-      'Talks and mentorship with women practitioners and alumni. Balanced speaker lineups planned for the whole term. Rotating facilitators. Meeting times reviewed for accessibility. Anonymous feedback channel.',
-    measure: 'Share of women attending, presenting and leading',
-    target: '≥ 40% of speakers & facilitators are women',
+      'Invite women practitioners and alumni to share their experience. Encourage more women members to present and facilitate. Keep a simple, anonymous way for members to give feedback.',
   },
   {
     icon: TrendingUp,
     title: 'More Opportunities',
-    tagline:
-      'Connecting members to projects, internships and partners outside the classroom.',
-    why: 'Many members hope the club will help them find internships, applied projects and professional contacts. This would build on the club’s existing connections.',
+    tagline: 'Helping members find opportunities beyond the classroom.',
+    why: 'Many members hope the club can help them hear about internships, competitions and applied projects. This would build on the connections the club already has.',
     program: 'Opportunity Board',
     programDetail:
-      'Weekly digest of internships, competitions, datasets and scholarships. Possible partnerships with industry and research labs. A Kaggle/Zindi competition team. Alumni career sessions.',
-    measure: 'Opportunities shared; members who applied; partnerships',
-    target: '1 digest per week · 1 competition team',
+      'Collect and share internships, competitions, datasets and scholarships in one place. Support members who want to form teams for data competitions. Invite alumni to talk about their career paths.',
   },
   {
     icon: Target,
     title: 'Clear Priorities',
-    tagline:
-      'A focused roadmap with goals we can measure and achieve together.',
-    why: 'A shared roadmap can help a new committee agree on what to do first. Ideas that do not fit the current term can be recorded for later.',
-    program: 'Public Roadmap',
+    tagline: 'Agreeing early on what matters most this term.',
+    why: 'A new committee has many good ideas and limited time. A short, shared plan can help us focus, and ideas that do not fit this term can be kept for later.',
+    program: 'Shared Roadmap',
     programDetail:
-      'One-page term strategy and public roadmap. Monthly executive review. Mid-term review of each program. One-page end-of-term report.',
-    measure: 'Roadmap delivered on time; member satisfaction',
-    target: '80% of roadmap delivered · satisfaction ≥ 4/5',
+      'A short term plan agreed with the executive team and shared with members. Regular check-ins on how it is going, and a brief summary at the end of the term.',
   },
 ];
 
@@ -104,20 +91,17 @@ const phases = [
     items: [
       'Handover sessions with the outgoing leadership to capture what works',
       'One-to-one meetings with each member of the new committee',
-      'Member survey: 10 questions, under 5 minutes',
     ],
-    output: 'Handover notes and member insights',
   },
   {
     icon: Compass,
     days: 'Days 31–60',
     title: 'Plan together',
     items: [
-      'Term strategy: one goal, four priorities, 2–3 targets each',
+      'A simple term plan built around the four priorities',
       'Strategy workshop with the new committee to agree it',
       'Roadmap: programs, dates, owners, around the exam calendar',
     ],
-    output: 'Agreed strategy & roadmap, published',
   },
   {
     icon: Rocket,
@@ -125,20 +109,9 @@ const phases = [
     title: 'Deliver & measure',
     items: [
       'Launch the first program under each priority',
-      'Dashboard updated every two weeks',
       'Mid-term review to refine each program',
     ],
-    output: 'Progress report to members, with data',
   },
-];
-
-const metrics = [
-  { label: 'Active members', target: '40%', note: 'attended 2+ activities' },
-  { label: 'Member-led sessions', target: '6', note: 'per term' },
-  { label: 'Women speakers & facilitators', target: '≥40%', note: 'of total' },
-  { label: 'Opportunity digests', target: '1/wk', note: 'and applications' },
-  { label: 'Roadmap delivered', target: '80%', note: 'on schedule' },
-  { label: 'Member satisfaction', target: '≥4/5', note: 'end-of-term survey' },
 ];
 
 const roleDoes = [
@@ -160,12 +133,6 @@ const roleDoes = [
     'Partnerships',
     'Identifying which companies, labs, clubs and alumni to work with.',
   ],
-];
-
-const roleNot = [
-  'A second President. The executive team decides collectively; the Strategist advises and shapes.',
-  'The events lead. The Strategist selects which events serve the strategy; the events lead runs them.',
-  'A single point of execution. Delegation keeps time for planning and review.',
 ];
 
 const risks = [
@@ -339,34 +306,16 @@ const Manifesto: NextPage = () => {
         <section>
           <SectionLabel>02 · Mandate</SectionLabel>
           <SectionTitle>Scope of the Strategist role</SectionTitle>
-          <div className="mt-8 grid lg:grid-cols-3 gap-5">
-            <div className="lg:col-span-2 grid sm:grid-cols-2 gap-4">
-              {roleDoes.map(([t, d]) => (
-                <div
-                  key={t}
-                  className="rounded-xl border bg-card p-4 flex gap-3"
-                >
-                  <CheckCircle2 className="h-5 w-5 mt-0.5 shrink-0 text-emerald-600" />
-                  <div>
-                    <div className="font-semibold">{t}</div>
-                    <div className="text-sm text-muted-foreground">{d}</div>
-                  </div>
+          <div className="mt-8 grid sm:grid-cols-2 gap-4">
+            {roleDoes.map(([t, d]) => (
+              <div key={t} className="rounded-xl border bg-card p-4 flex gap-3">
+                <CheckCircle2 className="h-5 w-5 mt-0.5 shrink-0 text-emerald-600" />
+                <div>
+                  <div className="font-semibold">{t}</div>
+                  <div className="text-sm text-muted-foreground">{d}</div>
                 </div>
-              ))}
-            </div>
-            <div className={`${NAVY} rounded-xl p-5 text-white`}>
-              <div className={`font-semibold mb-3 ${GOLD_TEXT}`}>
-                Out of scope
               </div>
-              <ul className="space-y-3">
-                {roleNot.map(t => (
-                  <li key={t} className="flex gap-2 text-sm text-white/85">
-                    <XCircle className="h-4 w-4 mt-0.5 shrink-0 text-[#ff5c6f]" />
-                    <span>{t}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
+            ))}
           </div>
         </section>
 
@@ -377,9 +326,9 @@ const Manifesto: NextPage = () => {
             As Strategist, I&apos;ll focus on four things
           </SectionTitle>
           <p className="mt-3 text-muted-foreground max-w-3xl">
-            Each priority comes with a flagship program and a metric. Targets
-            are initial estimates. Final targets will be set with the executive
-            team after the first member survey.
+            These are ideas I would bring to the executive team. The details
+            would be decided together, based on what members need and what we
+            can realistically do in one term.
           </p>
 
           <div className="mt-10 grid md:grid-cols-2 gap-5">
@@ -409,25 +358,11 @@ const Manifesto: NextPage = () => {
                 <p className="mt-4 text-sm text-muted-foreground">{p.why}</p>
                 <div className="mt-4 rounded-lg bg-muted/60 p-4 flex-1">
                   <div className="text-xs uppercase tracking-wider text-muted-foreground">
-                    Flagship program
+                    What I would propose
                   </div>
                   <div className={`font-semibold ${RED_TEXT}`}>{p.program}</div>
                   <p className="mt-1 text-sm">{p.programDetail}</p>
                 </div>
-                <dl className="mt-4 grid grid-cols-2 gap-3 text-sm">
-                  <div>
-                    <dt className="text-xs uppercase tracking-wider text-muted-foreground">
-                      Metric
-                    </dt>
-                    <dd>{p.measure}</dd>
-                  </div>
-                  <div>
-                    <dt className="text-xs uppercase tracking-wider text-muted-foreground">
-                      Initial target
-                    </dt>
-                    <dd className="font-semibold">{p.target}</dd>
-                  </div>
-                </dl>
               </article>
             ))}
           </div>
@@ -438,7 +373,7 @@ const Manifesto: NextPage = () => {
           <SectionLabel>04 · Execution</SectionLabel>
           <SectionTitle>First 100 days</SectionTitle>
           <p className="mt-3 text-muted-foreground max-w-3xl">
-            Three phases. Each ends with a deliverable that members can see.
+            Three phases: listen first, plan together, then deliver.
           </p>
           <ol className="mt-10 grid md:grid-cols-3 gap-5">
             {phases.map((ph, i) => (
@@ -468,10 +403,6 @@ const Manifesto: NextPage = () => {
                     </li>
                   ))}
                 </ul>
-                <div className="mt-4 pt-3 border-t text-sm">
-                  <span className="text-muted-foreground">Deliverable: </span>
-                  <span className="font-semibold">{ph.output}</span>
-                </div>
               </li>
             ))}
           </ol>
@@ -490,28 +421,13 @@ const Manifesto: NextPage = () => {
             <span className={GOLD_TEXT}>every two weeks</span>
           </h2>
           <p className="mt-3 text-white/80 font-light max-w-3xl">
-            Data comes from attendance logs, the roadmap and member surveys, and
-            is shown on a dashboard open to all members. Only aggregate figures
-            are published. Individual data is never shared. An end-of-term
-            report records what was planned, what was delivered, and what the
-            next team should continue.
+            Members will regularly hear what is moving forward, what is harder
+            than expected, and why. Updates will be short and honest.
           </p>
-          <div className="mt-8 grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
-            {metrics.map(m => (
-              <div
-                key={m.label}
-                className="rounded-xl bg-white/5 border border-white/10 p-4"
-              >
-                <BarChart3 className={`h-5 w-5 ${GOLD_TEXT}`} />
-                <div className="mt-2 text-3xl font-black">{m.target}</div>
-                <div className="text-sm font-semibold">{m.label}</div>
-                <div className="text-xs text-white/60">{m.note}</div>
-              </div>
-            ))}
-          </div>
-          <p className="mt-6 text-sm text-white/70">
-            Progress is shared openly. If a target needs adjusting, members hear
-            it early, with the reason and an updated plan.
+          <p className="mt-4 text-white/80 font-light max-w-3xl">
+            If plans need to change, members will know early. At the end of the
+            term, a brief report will set out what we achieved and what the next
+            team can build on.
           </p>
         </section>
 

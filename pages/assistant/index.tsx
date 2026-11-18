@@ -326,29 +326,42 @@ const Gpt: NextPage = () => {
 
         {/* Input Area */}
         <div className="py-2 flex-shrink-0">
-          <div className="flex gap-2">
-            <Input
-              data-cursor-focusable="true"
-              value={query}
-              onChange={e => setQuery(e.target.value)}
-              onKeyDown={handleKeyDown}
-              className="flex-1"
-              placeholder={'Ask me anything about Jean de Dieu...'}
-              disabled={queryProcessing || !isServerUp || cooldownRemaining > 0}
-            />
-            <Button
-              onClick={handleAskBtnSubmit}
-              disabled={
-                query === '' ||
-                queryProcessing ||
-                !isServerUp ||
-                cooldownRemaining > 0
-              }
-              size="icon"
-              title={'Send message'}
+          {/* Tinted, outlined panel so visitors immediately see where to type */}
+          <div className="rounded-xl border-2 border-primary bg-[color-mix(in_srgb,var(--primary)_12%,var(--background))] p-2 sm:p-3 shadow-md">
+            <label
+              htmlFor="assistant-chat-input"
+              className="block px-1 pb-1.5 text-xs font-semibold uppercase tracking-wider text-primary"
             >
-              <Send className="h-4 w-4" />
-            </Button>
+              Start chatting here
+            </label>
+            <div className="flex gap-2">
+              <Input
+                id="assistant-chat-input"
+                data-cursor-focusable="true"
+                value={query}
+                onChange={e => setQuery(e.target.value)}
+                onKeyDown={handleKeyDown}
+                className="flex-1 h-11 bg-background border-primary focus-visible:ring-2 focus-visible:ring-primary"
+                placeholder={'Ask me anything about Jean de Dieu...'}
+                disabled={
+                  queryProcessing || !isServerUp || cooldownRemaining > 0
+                }
+              />
+              <Button
+                onClick={handleAskBtnSubmit}
+                disabled={
+                  query === '' ||
+                  queryProcessing ||
+                  !isServerUp ||
+                  cooldownRemaining > 0
+                }
+                size="icon"
+                className="h-11 w-11 shrink-0"
+                title={'Send message'}
+              >
+                <Send className="h-4 w-4" />
+              </Button>
+            </div>
           </div>
         </div>
       </div>

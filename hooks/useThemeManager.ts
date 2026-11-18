@@ -85,11 +85,12 @@ export const useThemeManager = (): UseThemeManagerReturn => {
         // Check for saved preference FIRST before loading any theme
         const savedPreference = loadThemePreference();
         let themeToLoad = 'default';
-        let modeToUse = mode;
+        // next-themes owns light/dark (the header toggle writes to it), so it
+        // is the source of truth; the saved preference only picks the palette
+        const modeToUse = mode;
 
         if (savedPreference) {
           themeToLoad = savedPreference.themeName;
-          modeToUse = savedPreference.mode;
         }
 
         // Load the target theme (either saved or default)
@@ -115,15 +116,12 @@ export const useThemeManager = (): UseThemeManagerReturn => {
         // Apply the theme only once we know which one to use
         setCurrentTheme(targetTheme);
 
-        // Set the mode before applying the theme to avoid mode mismatch
-        if (savedPreference && savedPreference.mode !== mode) {
-          setNextTheme(savedPreference.mode);
-        }
-
-        // Apply the theme with the correct mode (only if we didn't apply instant theme, or if theme differs)
+        // Apply the theme with the correct mode (unless the instant cache
+        // already applied exactly this theme in this mode)
         if (
           !hasInstantTheme ||
-          savedPreference?.themeName !== targetTheme.name
+          savedPreference?.themeName !== targetTheme.name ||
+          savedPreference?.mode !== modeToUse
         ) {
           applyTheme(targetTheme, modeToUse);
         }
@@ -256,6 +254,7 @@ export const useThemeManager = (): UseThemeManagerReturn => {
           if (correctTheme) {
             setCurrentTheme(correctTheme);
             applyThemeWithTransition(correctTheme, mode, 200);
+            saveThemeWithCache(correctTheme, mode);
             return;
           }
           // Apply current theme with new mode if no correct theme found
@@ -264,6 +263,8 @@ export const useThemeManager = (): UseThemeManagerReturn => {
       } else {
         // Apply current theme with new mode
         applyThemeWithTransition(currentTheme, mode, 200);
+        // Remember the mode so the next visit doesn't restore stale colors
+        saveThemeWithCache(currentTheme, mode);
       }
     }
   }, [

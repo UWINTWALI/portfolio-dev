@@ -154,8 +154,8 @@ const Home: NextPage = () => {
           </div>
           <div className="text-muted-foreground font-light space-y-3 mt-8">
             <p>
-              I'm a Data Scientist and a graduate student in the Master of
-              Science in Engineering Artificial Intelligence at{' '}
+              I am a Data Scientist and a graduate student in the Master of
+              Science in Engineering Artificial Intelligence program at{' '}
               <Anchor
                 href="https://www.africa.engineering.cmu.edu/"
                 target={'_blank'}
@@ -163,13 +163,13 @@ const Home: NextPage = () => {
               >
                 Carnegie Mellon University Africa
               </Anchor>
-              . I want to work as a researcher in AI and machine learning. I
-              like to ask careful questions of data, build models rigorously,
-              and turn the results into decisions people can trust.
+              . I aspire to a research career in artificial intelligence and
+              machine learning, driven by a commitment to asking precise
+              questions of data, developing models with rigor, and translating
+              evidence into decisions that people can trust.
             </p>
             <p>
-              I come to research from engineering. Before CMU-Africa, I studied
-              at the{' '}
+              My path to research began in engineering. During my studies at the{' '}
               <Anchor
                 href="https://www.ur.ac.rw/"
                 target={'_blank'}
@@ -177,8 +177,17 @@ const Home: NextPage = () => {
               >
                 University of Rwanda
               </Anchor>{' '}
-              and built software that runs in real institutions. That taught me
-              that a model only matters once it works in the real world.
+              and in the years that followed, I built software used in the daily
+              operations of real institutions. That experience shaped a
+              conviction that now guides my research: a model&apos;s value lies
+              not only in its accuracy, but in how reliably it performs in the
+              real world.
+            </p>
+            <p>
+              Today, I am engaged in AI and machine learning projects and
+              research, while steadily deepening my domain knowledge so that the
+              models I build are grounded in the problems they are meant to
+              solve.
             </p>
           </div>
         </div>
@@ -196,21 +205,22 @@ const Home: NextPage = () => {
           </Button>
         </div>
         <div className="text-muted-foreground font-light mt-2 mb-4">
-          Before I focused on data science and AI research, I spent over 2 years
+          Before turning to data science and AI research, I spent over two years
           building software for real-world operations, from a national justice
-          system to full-stack web platforms. That work taught me things I now
-          apply to machine learning: understand the problem first, test
-          thoroughly, and build for the people who will use the result.
+          system to full-stack web platforms. That work instilled principles I
+          now bring to machine learning: understand the problem before modeling
+          it, test rigorously, and design for the people who will use the
+          results.
         </div>
         <Separator className="my-4" />
         <ExperienceItem
           dateRange="March 24, 2025 – May 16, 2025"
           logo={MinijustLogo}
           logoAlt="MINIJUST Logo"
-          duration="Full Time  - 3 month"
+          duration="Full Time - 3 months"
           title="Software Developer Intern at"
           company="MINIJUST"
-          description="Enhanced and maintained the UPR LC system for Rwanda’s Ministry of Justice, adding key Reporter permissions, debugging the Django backend, performing code reviews to the system supporting 72+ institutions for reliable human rights coordination."
+          description="Enhanced and maintained the UPR LC system for Rwanda’s Ministry of Justice, a platform that supports human rights coordination across more than 72 institutions. Implemented Reporter permissions, debugged the Django backend, and conducted code reviews to improve the system’s reliability."
           url="https://www.minijust.gov.rw/"
           onLinkClick={() => handleLinkClick('MINIJUST Link')}
         />
@@ -219,10 +229,10 @@ const Home: NextPage = () => {
           dateRange="Sept 3, 2025 - Nov 20, 2025"
           logo={WsaLogo}
           logoAlt="WSA Logo"
-          duration="Part Time  - 3 month"
+          duration="Part Time - 3 months"
           title="Software Developer Intern at"
-          company="	Webstack Academy"
-          description="Built and launched HomelyHub, a full-stack MERN web app for real estate and hotel bookings, featuring secure user authentication, dynamic property search, booking system, and responsive React UI."
+          company="Webstack Academy"
+          description="Built and launched HomelyHub, a full-stack MERN application for real estate and hotel bookings, featuring secure user authentication, dynamic property search, a booking system, and a responsive React interface."
           url="https://webstackacademy.com/"
           onLinkClick={() => handleLinkClick('WSA Link')}
         />
@@ -265,15 +275,16 @@ const Home: NextPage = () => {
       <div className="mt-20 sm:mt-32">
         <div className="text-4xl sm:text-5xl font-medium">Contact Me</div>
         <div className="font-light text-muted-foreground mt-4 mb-10">
-          I'm always open to new opportunities and connections. Feel free to
-          reach out to me at{' '}
+          I welcome research collaborations, new opportunities, and
+          conversations about data science and AI. Please feel free to reach out
+          at{' '}
           <Anchor
             onClick={() => handleLinkClick('MailTo Link')}
             href="mailto:uwintwalijeandedieu3@gmail.com"
           >
             uwintwalijeandedieu3@gmail.com
           </Anchor>
-          !
+          .
         </div>
         <EmailBox />
       </div>

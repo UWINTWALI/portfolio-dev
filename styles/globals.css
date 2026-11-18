@@ -44,6 +44,12 @@
     --border: #ffffff;
   }
 
+  /* Default text color follows the active theme so any element without an
+     explicit color (headings, paragraphs, labels) stays readable in dark mode */
+  body {
+    color: var(--foreground);
+  }
+
   /* Smooth transitions for theme changes - excluding cursor and transform properties */
   * {
     transition-property:
@@ -345,7 +351,9 @@
 .site-grid {
   --grid-minor: color-mix(in srgb, var(--foreground) 11%, transparent);
   --grid-major: color-mix(in srgb, var(--primary) 32%, transparent);
-  background-color: var(--background);
+  /* Slightly tinted base (6% of the text color) so the page isn't plain white
+     and white cards stand out from it */
+  background-color: color-mix(in srgb, var(--foreground) 6%, var(--background));
   background-image:
     linear-gradient(to right, var(--grid-major) 1px, transparent 1px),
     linear-gradient(to bottom, var(--grid-major) 1px, transparent 1px),
@@ -359,6 +367,8 @@
   background-position: center top;
 }
 .dark .site-grid {
+  /* Dark mode keeps the plain background; tinting would lighten it */
+  background-color: var(--background);
   --grid-minor: color-mix(in srgb, var(--foreground) 13%, transparent);
   --grid-major: color-mix(in srgb, var(--primary) 38%, transparent);
 }
