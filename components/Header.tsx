@@ -60,6 +60,15 @@ const Header = ({ currentLink = '', loading = false }) => {
           Manifesto
         </Button>
       </Link>
+      <Link href="/events" passHref>
+        <Button
+          variant="link"
+          onClick={onLinkClick}
+          className={`${currentLink === 'events' ? 'text-primary' : 'text-muted-foreground'} ${mobile ? 'justify-start w-full text-lg h-12' : ''}`}
+        >
+          Upcoming Event
+        </Button>
+      </Link>
       <Link href="/home" passHref>
         <Button
           variant="link"
