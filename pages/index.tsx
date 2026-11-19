@@ -14,6 +14,7 @@ import {
   CheckCircle2,
   ArrowRight,
   ShieldAlert,
+  MessageCircleQuestion,
 } from 'lucide-react';
 
 const TRACKING_ID = process.env.NEXT_PUBLIC_TRACKING_ID;
@@ -263,7 +264,7 @@ const Manifesto: NextPage = () => {
             </div>
           </div>
 
-          <div className="lg:col-span-2 order-1 lg:order-2 flex justify-center">
+          <div className="lg:col-span-2 order-1 lg:order-2 flex flex-col items-center gap-10">
             <div className="relative">
               <div className="absolute -inset-4 rounded-full border-2 border-dashed border-[#C8102E]/60" />
               <img
@@ -277,6 +278,28 @@ const Manifesto: NextPage = () => {
                 #VOTEJEAN
               </div>
             </div>
+            <Link
+              href={{
+                pathname: '/assistant',
+                query: {
+                  q: 'Why is Jean de Dieu a credible candidate for Strategist?',
+                },
+              }}
+              onClick={() => track('Hero ask assistant')}
+              className="group relative inline-flex items-center gap-3 rounded-full bg-[#C8102E] text-white pl-3 pr-5 py-2.5 font-semibold shadow-[0_5px_0_0_#0E1E4A] dark:shadow-[0_5px_0_0_#E8B341] hover:-translate-y-0.5 transition"
+            >
+              <span className="absolute inset-0 rounded-full bg-[#C8102E] opacity-40 animate-ping motion-reduce:hidden" />
+              <span className="relative grid place-items-center h-8 w-8 rounded-full bg-white/15">
+                <MessageCircleQuestion className="h-5 w-5" />
+              </span>
+              <span className="relative leading-tight text-left">
+                <span className="block">Ask my assistant</span>
+                <span className="block text-xs font-normal text-white/80">
+                  Why should you trust me?
+                </span>
+              </span>
+              <ArrowRight className="relative h-4 w-4 group-hover:translate-x-0.5 transition" />
+            </Link>
           </div>
         </section>
 

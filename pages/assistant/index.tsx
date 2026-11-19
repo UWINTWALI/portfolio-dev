@@ -15,6 +15,7 @@ import {
   TooltipProvider,
 } from '@/components/ui/tooltip';
 import { toast } from 'sonner';
+import { useRouter } from 'next/router';
 
 import assistantIcon from '../../images/assistant.png';
 import { v4 as uuidv4 } from 'uuid';
@@ -65,6 +66,14 @@ const Gpt: NextPage = () => {
   const [lastRequestTime, setLastRequestTime] = useState<number>(0);
   const [cooldownRemaining, setCooldownRemaining] = useState<number>(0);
   const historyRef = useRef<HTMLDivElement>(null);
+  const router = useRouter();
+
+  // Prefill the input when arriving from a link such as /assistant?q=...
+  useEffect(() => {
+    if (!router.isReady) return;
+    const q = router.query.q;
+    if (typeof q === 'string' && q.trim()) setQuery(q.slice(0, 500));
+  }, [router.isReady, router.query.q]);
 
   // Rate limiting configuration
   const RATE_LIMIT_MS = 3000; // 3 seconds cooldown between requests
