@@ -38,7 +38,7 @@ const details = [
     k: 'Launch & info session',
     v: 'Friday, 20 November 2026',
   },
-  { icon: Clock, k: 'Time', v: '5:00 PM CAT' },
+  { icon: Clock, k: 'Time', v: '5:00 PM – 6:00 PM CAT' },
   {
     icon: MapPin,
     k: 'Venue',
@@ -113,7 +113,7 @@ const Events: NextPage = () => {
         <title>Upcoming Event · CMU-Africa x Zindi Hackathon</title>
         <meta
           name="description"
-          content="CMU-Africa x Zindi Hackathon: launch and info session on 20 November 2026 at Carnegie Mellon University Africa and online. Register, practise on Zindi, and make full use of DataCamp."
+          content="CMU-Africa x Zindi Hackathon: launch and info session on 20 November 2026, 5:00 to 6:00 PM CAT, at Carnegie Mellon University Africa and online. Register, practise on Zindi, and make full use of DataCamp."
         />
         <meta
           property="og:image"
@@ -222,7 +222,7 @@ const Events: NextPage = () => {
             >
               <img
                 src="/events/cmu-zindi-hackathon-2026.jpg"
-                alt="CMU-Africa x Zindi Hackathon launch and info session: Friday 20 November 2026, 5:00 PM CAT, at CMU-Africa and online. Challenge opens 20 November; submissions close 27 November at 4 PM."
+                alt="CMU-Africa x Zindi Hackathon launch and info session: Friday 20 November 2026, 5:00 PM to 6:00 PM CAT, at CMU-Africa and online. Challenge opens 20 November; submissions close 27 November at 4 PM."
                 width={1131}
                 height={1600}
                 className="w-full h-auto rounded-2xl border shadow-xl hover:shadow-2xl transition"
